@@ -6,8 +6,7 @@ def my_var
   c = nil
   d = 10.0
 
-  puts "mes variables"
-
+  puts "mes variables :"
   puts "\ta contient : #{a.inspect} et est de type: #{a.class}"
   puts "\tb contient : #{b} et est de type: #{b.class}"
   puts "\tc contient : #{c.inspect} et est de type: #{c.class}"
