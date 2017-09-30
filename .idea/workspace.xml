@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6502e80e-e153-4e50-b7a3-8d0a3670a9cd" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/d01/ex01/numbers.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DOCS/D01.pdf" afterPath="$PROJECT_DIR$/DOCS/D01.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PISCINE_RUBY.iml" afterPath="$PROJECT_DIR$/.idea/PISCINE_RUBY.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/d00/ex03/copy.html" afterPath="$PROJECT_DIR$/d00/ex03/copy.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/d01/ex00/var.rb" afterPath="$PROJECT_DIR$/d01/ex00/var.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/d01/ex01/croissant.rb" afterPath="$PROJECT_DIR$/d01/ex01/croissant.rb" />
     </list>
     <ignored path="PISCINE_RUBY.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,11 +29,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.76790833">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="var.rb" pinned="false" current-in-tab="true">
+          <file leaf-file-name="var.rb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/d01/ex00/var.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+                <state relative-caret-position="-7">
+                  <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
                   <folding />
                 </state>
               </provider>
@@ -56,11 +59,21 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="croissant.rb" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/d01/ex01/croissant.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="75">
+                  <caret line="5" column="59" lean-forward="true" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="MARKS.jpg" pinned="false" current-in-tab="false">
+          <file leaf-file-name="MARKS.jpg" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/MARKS.jpg">
               <provider selected="true" editor-type-id="images">
                 <state />
@@ -70,18 +83,18 @@
           <file leaf-file-name="Where.rb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/d01/ex03/Where.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
+                <state relative-caret-position="-7">
                   <caret line="23" column="5" lean-forward="false" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+          <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/.gitignore">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="750">
-                  <caret line="50" column="5" lean-forward="false" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+                <state relative-caret-position="225">
+                  <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -91,6 +104,14 @@
       </split-second>
     </splitter>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>&quot;</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>'</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -98,9 +119,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/d00/.gitignore" />
-        <option value="$PROJECT_DIR$/d01/ex01/croissant.rb" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/d01/ex00/var.rb" />
+        <option value="$PROJECT_DIR$/d01/ex01/croissant.rb" />
       </list>
     </option>
   </component>
@@ -162,6 +183,38 @@
               <item name="d01" type="462c0819:PsiDirectoryNode" />
               <item name="ex00" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="PISCINE_RUBY" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PISCINE_RUBY" type="462c0819:PsiDirectoryNode" />
+              <item name="d01" type="462c0819:PsiDirectoryNode" />
+              <item name="ex01" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PISCINE_RUBY" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PISCINE_RUBY" type="462c0819:PsiDirectoryNode" />
+              <item name="REFERENCE" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PISCINE_RUBY" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PISCINE_RUBY" type="462c0819:PsiDirectoryNode" />
+              <item name="REFERENCE" type="462c0819:PsiDirectoryNode" />
+              <item name="pcadiot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PISCINE_RUBY" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PISCINE_RUBY" type="462c0819:PsiDirectoryNode" />
+              <item name="REFERENCE" type="462c0819:PsiDirectoryNode" />
+              <item name="pcadiot" type="462c0819:PsiDirectoryNode" />
+              <item name="d01" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PISCINE_RUBY" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PISCINE_RUBY" type="462c0819:PsiDirectoryNode" />
+              <item name="REFERENCE" type="462c0819:PsiDirectoryNode" />
+              <item name="pcadiot" type="462c0819:PsiDirectoryNode" />
+              <item name="d01" type="462c0819:PsiDirectoryNode" />
+              <item name="ex01" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -174,16 +227,17 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Ruby" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/d01/ex07" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/d01/ex01" />
       <recent name="$PROJECT_DIR$/rush00" />
       <recent name="$PROJECT_DIR$/d03" />
       <recent name="$PROJECT_DIR$/d01" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/d01/ex07" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -328,12 +382,12 @@
       <workItem from="1506599259092" duration="1432000" />
       <workItem from="1506634773460" duration="3593000" />
       <workItem from="1506641035358" duration="8709000" />
-      <workItem from="1506726774541" duration="1042000" />
+      <workItem from="1506726774541" duration="1733000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15575000" />
+    <option name="totallyTimeSpent" value="16266000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="836" y="0" width="1724" height="1440" extended-state="6" />
@@ -582,14 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/d01/ex01/croissant.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="3" lean-forward="false" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/d01/ex07/elm.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
@@ -609,23 +655,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MARKS.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/d01/ex03/Where.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
+        <state relative-caret-position="-7">
           <caret line="23" column="5" lean-forward="false" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="50" column="5" lean-forward="false" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -648,8 +681,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/d01/ex00/var.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="-7">
+          <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d01/ex01/numbers.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="3" lean-forward="true" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MARKS.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d01/ex01/croissant.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="59" lean-forward="true" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
           <folding />
         </state>
       </provider>
