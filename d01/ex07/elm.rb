@@ -15,7 +15,7 @@ def puts_begin_html
   <style>
 	body 
 	{ 
-		background: url("http://cdn.uploadvr.com/wp-content/uploads/2016/07/rick-and-morty-wallpaper-1024x576.jpg") no-repeat center center fixed; 
+		background: url("http://nerdist.com/wp-content/uploads/2017/08/Pickle-Rick-giveaway.jpg") no-repeat center center fixed; 
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
@@ -28,13 +28,22 @@ def puts_begin_html
 	  background-color: yellow;
 	  border-color: black;
 	  border: 2px solid;
+
 	  border-radius: 3px;
 	}
-	table {	width: 100%;} td {border: 1px solid black; padding:10px} 
+	table {	 table-layout:fixed; width: 100%;overflow:hidden} td {
+min-width: 200px;
+text-overflow: wrap;
+	white-space: nowrap;
+		word-wrap: break-word;
+	overflow: hidden;
+border: 1px solid black; padding:10px} 
+
   </style>
 </head>
 <body>
   <h1>Periodic Table of Elements</h1>
+	<div style="width:100%;">
 BEGINHTML
 	File.write('periodic_table.html', html_content)
 end
@@ -43,7 +52,7 @@ end
 def puts_end_html
 	html_content =
 <<ENDHTML
-
+</div>
 </body>
 </html>
 ENDHTML
@@ -62,9 +71,6 @@ def put_table_in_file
 	for line in number_set
 		my_dict = {}
 		first_split = line.split('=')
-	#	puts first_split.at(0)
-	#	puts first_split.at(1)
-
 		my_dict['name'] = first_split.at(0).tr(' ', '')
 		second_split = first_split.at(1).split(',')
 		for data in second_split
@@ -74,19 +80,19 @@ def put_table_in_file
 		arr_elements.push(my_dict)
 	end
 	previous = 0
-	s = "<table>"
+	s = '<table>'
 	for elem in arr_elements
 		current = (elem['position']).to_i
 		if current == 0
-			s += "<tr>"
+			s += '<tr>'
 		end
 		if (current - previous) > 1
 			s += "<td colspan='" + (current - previous - 1).to_s + "'></td>"
 		end
-		s += "<td><h4>" + elem['name'] + "</h4>"
-		s += "<ul><li>" + elem['number'] + "</li><li>" + elem['small'] + "</li><li>" + elem['molar'] + "</li></ul></td>"
+		s += "<td style='background-color: white'><h4>" + elem['name'] + '</h4>'
+		s += '<ul><li>' + elem['number'] + '</li><li>' + elem['small'] + '</li><li>' + elem['molar'] + '</li></ul></td>'
 		if current == 17
-			s += "</tr>"
+			s += '</tr>'
 			current = 0
 		end
 		previous = current
