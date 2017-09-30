@@ -1,24 +1,24 @@
 #!/usr/bin/env ruby -w
 
 def erehW
-	states = {
+	states =
+	{
 		"Oregon" => "OR",
 		"Alabama" => "AL",
 		"New Jersey" => "NJ",
 		"Colorado" => "CO"
 	}
-
-	capitals_cities = {
+	capitals_cities =
+	{
 		"OR" => "Salem",
 		"AL" => "Montgomery",
 		"NJ" => "Trenton",
 		"CO" => "Denver"
 	}
-
 	return unless ARGV.count == 1
-	capitale = ARGV[0]
-	capitals_cities_inv = capitals_cities.invert
-	puts capitals_cities_inv[capitale].nil? ? "Unknown capital city" : states.invert[capitals_cities_inv[capitale]]
+	capital = ARGV[0]
+	cc_inv = capitals_cities.invert
+	puts cc_inv[capital].nil? ? "Unknown capital city" : states.invert[cc_inv[capital]]
 end
 
 erehW

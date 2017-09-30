@@ -25,7 +25,7 @@ def hash_2_output
 		new_hash, (key, value)| # first arg, the new hash we created, and second arg, is the sub array of each element in data
 		new_hash[value] << key # create a new_hash map where value is key, and key is value. << is a method, where
 		# new_hash[value] receives key, and "<<" meaning is determined by ruby's hashmap system.
-		new_hash
+		new_hash # return new hash as the variable for the next interation to be used on LHS
 		}.
 			each {
 				|key, value| puts "#{key} : #{value.join(' ')}"

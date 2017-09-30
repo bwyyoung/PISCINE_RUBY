@@ -1,0 +1,2 @@
+
+ruby whereto.rb "Salem ,  ,Alabama, Toto ,   ,MontGOmery"
