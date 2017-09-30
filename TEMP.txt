@@ -1,2 +1,73 @@
 
 ruby whereto.rb "Salem ,  ,Alabama, Toto ,   ,MontGOmery"
+
+
+
+h4{font-size:12px }
+	table    {  text-align:center ;
+		  width : 100%; }
+	img  { background-color : white }
+	td {
+	  border : 2px solid;
+	  border-radius: 3px;
+	  width:5.5%;
+	  height:60px;
+	}
+	#me {
+	  font-family: monospace;
+		font-style: italic;
+		text-align:right
+	}
+
+	td.Alkali_metal {
+	  background-color : rgb(255, 102, 102);
+	}
+	td.Alkaline_earth_metal {
+	  background-color : rgb(255, 222, 173);
+	}
+	td.Lan­thanide {
+	  background-color : rgb(255, 191, 255);
+	}
+	td.Actinide {
+	  background-color : rgb(255, 153, 204);
+	}
+	td.Transition_metal {
+	  background-color : rgb(255, 192, 192);
+	}
+	td.Post_transition_metal {
+	  background-color : rgb(204, 204, 204);
+	}
+	td.Metalloid {
+	  background-color : #cccc99;
+	}
+	td.Polyatomic_nonmetal {
+	  background-color : rgb(161, 255, 195);
+	}
+	td.Diatomic_nonmetal {
+	  background-color : rgb(231, 255, 143) ;
+	}
+	td.Noble_gas {
+	  background-color : rgb(192, 255, 255);
+	}
+	td.Unkbow_chemical_property {
+	  background-color : #e8e8e8;
+	}
+	div.noato {
+	  text-align: left;
+	  font-family: Arial;  font-size: 9px;text-decoration:none;margin:0;padding:0;
+	}
+	div.symbol {
+	  font-family: Arial;  font-size: 36px;text-decoration:none;margin:0;padding:0;
+	  height:50px;
+	}
+	div.massato {
+	  text-align: right;
+	  font-family: Arial;  font-size: 9px;text-decoration:none;margin:0;padding:0;
+	}
+	td.vide{
+	  border : 0px;
+	}
+	ul{list-style-type: none;
+	  width:100%;
+	  padding-left:0
+	}
