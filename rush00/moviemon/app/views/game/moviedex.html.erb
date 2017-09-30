@@ -1,0 +1,22 @@
+<div class="moviedex">
+	<% unless @film.nil? %>
+		<div class="infos">
+			<div class="monster">
+				<h2><%= @film[:title]%></h2>
+				<table>
+					<tr>
+					<td><h4>Year </h4><%= @film[:year] %></td>
+					<td><h4>Genre </h4><%= @film[:genre] %></td>
+					</tr>
+					<tr>
+						<td><h4>Director</h4> <%= @film[:director] %></td>
+						<td><h4>IMB ratings</h4> <%= @film[:rating] %></td>
+					</tr>
+				</table>
+				<h3>Synopsis</h3> <%= @film[:synopsis] %>
+			</div>
+			<div class="poster"><img src="<%= @film[:poster] %>" /></div> 
+		</div>
+	<% end %> 
+	<div><%= image_tag("moviedex.jpg", class: 'moviedex')%></div>
+</div>
