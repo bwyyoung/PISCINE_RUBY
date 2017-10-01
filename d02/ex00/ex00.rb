@@ -16,13 +16,13 @@ class Html
 
 	def dump(str)
 	  File.open("#{@page_name}.html", 'a') { |file|
-		  file << " <p>#{str}</p>\n"
+		  file << "\t<p>#{str}</p>\n"
 	  }
 	end
 
 	def finish
 	  File.open("#{@page_name}.html", 'a') { |file|
-		  file << "</body>\n"
+		  file << "</body>"
 	  }
 	end
 end
