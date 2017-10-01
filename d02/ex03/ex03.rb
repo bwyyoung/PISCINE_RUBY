@@ -35,7 +35,6 @@ class Elem
 		end
 		str = to_s_opt(str)
 		str = to_s_tag_2(str)
-		return str
 	end
 
 	def to_s_tag_1(str)

@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby -w
 
 class Body_closed < StandardError
-
 	attr_reader :page_name
 
 	def initialize(page_name)
@@ -31,7 +30,7 @@ class Body_closed < StandardError
 end
 
 class Dup_file < StandardError
-  attr_reader :page_name
+	attr_reader :page_name
 
 	def initialize(page_name)
 		@page_name = page_name
@@ -49,7 +48,7 @@ class Dup_file < StandardError
 		rescue => error
 				@new_file = error.correct
 		end
-		File.open("#{@new_file}.html", "w+")
+		File.open("#{@new_file}.html", 'w+')
 		@new_file
 	end
 
@@ -61,7 +60,6 @@ end
 
 
 class Html
-
 	attr_reader :page_name
 
 	def initialize(filename)
