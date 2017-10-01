@@ -22,4 +22,7 @@ def where
 	puts states[state].nil? ? "Unknown state" : capitals_cities[states[state]]
 end
 
-where
+
+if $PROGRAM_NAME == __FILE__
+	where
+end

@@ -13,4 +13,7 @@ def my_var
   puts "\td contient : #{d.inspect} et est de type: #{d.class}"
 end
 
-my_var
+
+if $PROGRAM_NAME == __FILE__
+	my_var
+end

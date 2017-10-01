@@ -21,4 +21,6 @@ def erehW
 	puts cc_inv[capital].nil? ? "Unknown capital city" : states.invert[cc_inv[capital]]
 end
 
-erehW
+if $PROGRAM_NAME == __FILE__
+	erehW
+end

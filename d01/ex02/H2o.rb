@@ -32,4 +32,6 @@ def hash_2_output
 			}
 end
 
-hash_2_output
+if $PROGRAM_NAME == __FILE__
+	hash_2_output
+end

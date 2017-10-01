@@ -12,4 +12,7 @@ def coffeecroissant
 	# sort by age, then by name, and then for each element, print the first of the 2 elements
 	data.sort_by{ |name, age| [age, name] }.each{|element| puts element.first}
 end
-coffeecroissant
+
+if $PROGRAM_NAME == __FILE__
+	coffeecroissant
+end

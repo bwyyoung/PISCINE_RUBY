@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby -w
 
-
-
 def puts_begin_html
 
 	html_content =
@@ -107,4 +105,6 @@ def elm(args)
 	puts_end_html
 end
 
-elm(ARGV)
+if $PROGRAM_NAME == __FILE__
+	elm(ARGV)
+end

@@ -32,4 +32,7 @@ def whereto
 		end
 	}
 end
-whereto
+
+if $PROGRAM_NAME == __FILE__
+	whereto
+end
