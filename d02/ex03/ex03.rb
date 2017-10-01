@@ -13,8 +13,8 @@ end
 
 class Elem
 	attr_reader :tag, :content, :tag_type, :opt
-	def initialize(balise="", content=Array[], tag_type='double',  opt={})
-		@tag =  balise
+	def initialize(tag="", content=Array[], tag_type='double',  opt={})
+		@tag =  tag
 		@content =  content
 		@tag_type =  tag_type
 		@opt = opt
