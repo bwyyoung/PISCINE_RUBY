@@ -5,7 +5,7 @@ require 'deepthought/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "deepthought"
-  spec.version       = deepthought::VERSION
+  spec.version       = Deepthought::VERSION
   spec.authors       = ["Brian YOUNG WEI YAN"]
   spec.email         = ["byoung-w@student.42.fr"]
 

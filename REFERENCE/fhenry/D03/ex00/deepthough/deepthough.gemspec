@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'deepthough/version'
+require 'deepthought/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "deepthough"
-  spec.version       = Deepthough::VERSION
+  spec.name          = "deepthought"
+  spec.version       = Deepthought::VERSION
   spec.authors       = ["Francois HENRY"]
   spec.email         = ["fhenry@student.42.fr"]
 

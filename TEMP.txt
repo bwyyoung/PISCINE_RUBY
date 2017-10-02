@@ -1,7 +1,7 @@
 
 ruby whereto.rb "Salem ,  ,Alabama, Toto ,   ,MontGOmery"
 
-
+https://github.com/seattlerb/minitest.git
 
 h4{font-size:12px }
 	table    {  text-align:center ;
