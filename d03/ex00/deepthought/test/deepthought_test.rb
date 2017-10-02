@@ -4,19 +4,19 @@ class DeepthoughtTest < Minitest::Test
 
   def test_class
 	puts '--test_class--'
-	foo = Deepthought::Deepthought.new
-	assert_kind_of(Deepthought::Deepthought, foo,
+	m_deepthought = Deepthought::Deepthought.new
+	assert_kind_of(Deepthought::Deepthought, m_deepthought,
 				   "Deepthought Object Not Matched")
 	puts '--test_class END--'
   end
 
   def test_respond
 	puts '--test_respond--'
-	foo = Deepthought::Deepthought.new
+	m_deepthought = Deepthought::Deepthought.new
 	question = "The Ultimate Question of Life, the Universe and Everything"
-	assert_equal(foo.respond(question), "42")
+	assert_equal(m_deepthought.respond(question), "42")
 	question = "Can I have some pussi pls?"
-	assert_equal(foo.respond(question), "Mmmm i'm bored")
+	assert_equal(m_deepthought.respond(question), "Mmmm i'm bored")
 	puts '--test_respond END--'
   end
 

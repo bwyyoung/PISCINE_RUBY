@@ -1,4 +1,41 @@
 
+
+def test_loops
+		puts '------------------------ Loop Test ------------------------'
+		m_wiki = Ft_wikipedia::Ft_wikipedia
+		assert_nil m_wiki.search("France")
+		puts '------------------------ Loop Test End------------------------'
+	end
+
+	def test_dead_end
+		puts '------------------------ Dead End Test ------------------------'
+		m_wiki = Ft_wikipedia::Ft_wikipedia
+		assert_nil m_wiki.search("fdasrfes3arfaesf")
+		puts '------------------------ Dead End Test End------------------------'
+	end
+	def test_class
+		puts '--test_class--'
+		m_deepthought = Ft_wikipedia::Ft_wikipedia.new
+		assert_kind_of(Ft_wikipedia::Ft_wikipedia, m_deepthought,
+					   "Deepthought Object Not Matched")
+		puts '--test_class END--'
+	end
+	def test_version_number
+		puts '------------------------ test_version_number ------------------------'
+		refute_nil ::Ft_wikipedia::VERSION
+		puts 'VERSION NUMBER OK: ' + Ft_wikipedia::VERSION
+		puts '------------------------ test_version_number END------------------------'
+	end
+
+	def test_running
+		puts '------------------------ test_running ------------------------'
+		assert true
+		puts '------------------------ test_running END------------------------'
+	end
+
+
+
+
 ruby whereto.rb "Salem ,  ,Alabama, Toto ,   ,MontGOmery"
 
 https://github.com/seattlerb/minitest.git

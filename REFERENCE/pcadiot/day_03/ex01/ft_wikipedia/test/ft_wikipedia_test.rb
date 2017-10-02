@@ -10,23 +10,23 @@ class FtWikipediaTest < Minitest::Test
   end
 
   def test_it_works_with_kiss
-    assert_equal 16, Ft_Wikipedia.search("Kiss"), "================= test avec Kiss"
+    assert_equal 16, Ft_wikipedia.search("Kiss"), "================= test avec Kiss"
   end
 
   def test_it_arrive_to_Philosophy
-    assert_output (/Philosophy/) { Ft_Wikipedia.search("Philosophy") }
-    assert_output (/Philosophy/) { Ft_Wikipedia.search("kiss") }
-    assert_output (/Philosophy/) { Ft_Wikipedia.search("Einstein") }
+    assert_output (/Philosophy/) { Ft_wikipedia.search("Philosophy") }
+    assert_output (/Philosophy/) { Ft_wikipedia.search("kiss") }
+    assert_output (/Philosophy/) { Ft_wikipedia.search("Einstein") }
   end
 
   def test_it_detects_loops_with_France
     puts "================= test avec France qui boucle"
-    assert_nil Ft_Wikipedia.search("France")
+    assert_nil Ft_wikipedia.search("France")
   end
 
   def test_it_detects_dead_ends_with_PilouXvfg
     puts "================= test avec PilouXvfg qui pete"
-    assert_nil Ft_Wikipedia.search("PilouXvfg")
+    assert_nil Ft_wikipedia.search("PilouXvfg")
   end
 
 end

@@ -5,7 +5,7 @@ require 'ft_wikipedia/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "ft_wikipedia"
-  spec.version       = Ft_Wikipedia::VERSION
+  spec.version       = Ft_wikipedia::VERSION
   spec.authors       = ["Francois HENRY"]
   spec.email         = ["fhenry@student.42.fr"]
 

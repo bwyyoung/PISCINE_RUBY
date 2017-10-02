@@ -1,9 +1,80 @@
-require 'test_helper'
+require_relative 'test_helper.rb'
 
 class FtWikipediaTest < Minitest::Test
+
+
+	def test_road_to_philosophy
+		puts '------------------------ test_Road_to_Philosophy ------------------------'
+		m_wiki = Ft_wikipedia::Ft_wikipedia
+		begin
+		m_wiki.search('Philosophy')
+		rescue => error
+		end
+		puts '----------'
+		begin
+		m_wiki.search('directory')
+		rescue => error
+		end
+		puts '----------'
+		begin
+		m_wiki.search('problem')
+		rescue => error
+		end
+		puts '----------'
+		begin
+		m_wiki.search('einstein')
+		rescue => error
+		end
+		puts '----------'
+		begin
+		m_wiki.search('kiss')
+		rescue => error
+		end
+		puts '----------'
+		begin
+		m_wiki.search('matter')
+		rescue => error
+		end
+		puts '----------'
+		begin
+			m_wiki.search('Sex')
+		rescue => error
+		end
+		puts '----------'
+		begin
+			m_wiki.search('Filthy Frank')
+		rescue => error
+		end
+		assert_output (/Philosophy/) { m_wiki.search('Philosophy') }
+		assert_output (/Philosophy/) { m_wiki.search('Filthy Frank') }
+		assert_output (/Philosophy/) { m_wiki.search('Sex') }
+		puts '------------------------ test_Road_to_Philosophy END------------------------'
+	end
+
+	def test_loops
+		puts '------------------------ Loop Test ------------------------'
+		m_wiki = Ft_wikipedia::Ft_wikipedia
+		assert_nil m_wiki.search('France')
+		puts '------------------------ Loop Test End------------------------'
+	end
+
+	def test_dead_end
+		puts '------------------------ Dead End Test ------------------------'
+		m_wiki = Ft_wikipedia::Ft_wikipedia
+		assert_nil m_wiki.search('fdasrfes3arfaesf')
+		puts '------------------------ Dead End Test End------------------------'
+	end
+	def test_class
+		puts '--test_class--'
+		m_deepthought = Ft_wikipedia::Ft_wikipedia.new
+		assert_kind_of(Ft_wikipedia::Ft_wikipedia, m_deepthought,
+					   'Deepthought Object Not Matched')
+		puts '--test_class END--'
+	end
 	def test_version_number
 		puts '------------------------ test_version_number ------------------------'
-		refute_nil ::FtWikipedia::VERSION
+		refute_nil ::Ft_wikipedia::VERSION
+		puts 'VERSION NUMBER OK: ' + Ft_wikipedia::VERSION
 		puts '------------------------ test_version_number END------------------------'
 	end
 
@@ -12,32 +83,4 @@ class FtWikipediaTest < Minitest::Test
 		assert true
 		puts '------------------------ test_running END------------------------'
 	end
-
-	def test_kiss
-		puts '------------------------ test_kiss ------------------------'
-		assert_equal 16, Ft_Wikipedia.search("Kiss"),
-				 'test Kiss'
-		puts '------------------------ test_kiss END------------------------'
-	end
-
-	def test_road_to_philosophy
-		puts '------------------------ test_it_road_to_Philosophy ------------------------'
-		assert_output (/Philosophy/) { Ft_Wikipedia.search("Philosophy") }
-		assert_output (/Philosophy/) { Ft_Wikipedia.search("kiss") }
-		assert_output (/Philosophy/) { Ft_Wikipedia.search("Einstein") }
-		puts '------------------------ test_it_road_to_Philosophy END------------------------'
-	end
-
-	def test_loops
-		puts '------------------------ Loop Test ------------------------'
-		assert_nil Ft_Wikipedia.search("France")
-		puts '------------------------ Loop Test End------------------------'
-	end
-
-	def test_dead_end
-		puts '------------------------ Dead End Test ------------------------'
-		assert_nil Ft_Wikipedia.search("fdasrfes3arfaesf")
-		puts '------------------------ Dead End Test End------------------------'
-	end
-
 end

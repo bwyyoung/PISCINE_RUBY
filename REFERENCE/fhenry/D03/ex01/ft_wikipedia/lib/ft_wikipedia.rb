@@ -2,9 +2,9 @@ require "ft_wikipedia/version"
 require 'open-uri'
 require 'Nokogiri'
 
-module Ft_Wikipedia
+module Ft_wikipedia
 
-	class Ft_Wikipedia
+	class Ft_wikipedia
 
 		def initialize
 		end

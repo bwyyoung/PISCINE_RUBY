@@ -2,7 +2,7 @@ require "ft_wikipedia/version"
 require 'open-uri'
 require 'Nokogiri'
 
-class Ft_Wikipedia
+class Ft_wikipedia
 
   @@nb_links = 0
   @@mon_hash = Hash.new(0)
