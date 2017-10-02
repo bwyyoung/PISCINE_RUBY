@@ -29,4 +29,6 @@ class CheatController < ApplicationController
   end
   def quick_search
   end
+  def log_book
+  end
 end
