@@ -1,6 +1,4 @@
-# comeentaire avec faute
 class CheatController < ApplicationController
-  # et là sans faute
   def convention
   end
   def console
