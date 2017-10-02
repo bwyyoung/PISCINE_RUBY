@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield (@title) %></title>
+  <title><%= yield :title %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -35,9 +35,9 @@
               <li><a href="/rails_erb">ERB: Embedded Ruby</a></li>
             </ul>
           </li>
-          <li><a href="/quick_search">Quick Search</a></li>
           <li><a href="/editor">Editor Tips</a></li>
           <li><a href="/help">Help</a></li>
+          <li><a href="/quick_search">Quick Search</a></li>
         </ul>
       </div>
     </nav>
