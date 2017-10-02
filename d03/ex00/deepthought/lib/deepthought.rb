@@ -2,6 +2,8 @@ require "deepthought/version"
 
 require 'colorize'
 
+# See http://blog.thepete.net/blog/2010/11/20/creating-and-publishing-your-first-ruby/
+# https://stackoverflow.com/questions/11051073/declaring-a-class-within-a-module
 module Deepthought
 	class Deepthought
 		def initialize

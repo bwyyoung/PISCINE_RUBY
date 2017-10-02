@@ -20,12 +20,11 @@ class DeepthoughtTest < Minitest::Test
 	puts '--test_respond END--'
   end
 
-  def test_that_it_has_a_version_number
-	  puts '--test_that_it_has_a_version_number--'
+  def test_version_number
+	  puts '--test_version_number--'
 	  refute_nil ::Deepthought::VERSION
 	  puts 'VERSION NUMBER OK: ' + Deepthought::VERSION
-	  puts '--test_that_it_has_a_version_number END--'
-
+	  puts '--test_version_number END--'
   end
 end
 #

@@ -1,32 +1,43 @@
 require 'test_helper'
 
 class FtWikipediaTest < Minitest::Test
-  def test_that_it_has_a_version_number
-    refute_nil ::FtWikipedia::VERSION
-  end
+	def test_version_number
+		puts '------------------------ test_version_number ------------------------'
+		refute_nil ::FtWikipedia::VERSION
+		puts '------------------------ test_version_number END------------------------'
+	end
 
-  def test_it_does_something_useful
-    assert true
-  end
+	def test_running
+		puts '------------------------ test_running ------------------------'
+		assert true
+		puts '------------------------ test_running END------------------------'
+	end
 
-  def test_it_works_with_kiss
-    assert_equal 16, Ft_Wikipedia.search("Kiss"), "================= test avec Kiss"
-  end
+	def test_kiss
+		puts '------------------------ test_kiss ------------------------'
+		assert_equal 16, Ft_Wikipedia.search("Kiss"),
+				 'test Kiss'
+		puts '------------------------ test_kiss END------------------------'
+	end
 
-  def test_it_arrive_to_Philosophy
-    assert_output (/Philosophy/) { Ft_Wikipedia.search("Philosophy") }
-    assert_output (/Philosophy/) { Ft_Wikipedia.search("kiss") }
-    assert_output (/Philosophy/) { Ft_Wikipedia.search("Einstein") }
-  end
+	def test_road_to_philosophy
+		puts '------------------------ test_it_road_to_Philosophy ------------------------'
+		assert_output (/Philosophy/) { Ft_Wikipedia.search("Philosophy") }
+		assert_output (/Philosophy/) { Ft_Wikipedia.search("kiss") }
+		assert_output (/Philosophy/) { Ft_Wikipedia.search("Einstein") }
+		puts '------------------------ test_it_road_to_Philosophy END------------------------'
+	end
 
-  def test_it_detects_loops_with_France
-    puts "================= test avec France qui boucle"
-    assert_nil Ft_Wikipedia.search("France")
-  end
+	def test_loops
+		puts '------------------------ Loop Test ------------------------'
+		assert_nil Ft_Wikipedia.search("France")
+		puts '------------------------ Loop Test End------------------------'
+	end
 
-  def test_it_detects_dead_ends_with_PilouXvfg
-    puts "================= test avec PilouXvfg qui pete"
-    assert_nil Ft_Wikipedia.search("PilouXvfg")
-  end
+	def test_dead_end
+		puts '------------------------ Dead End Test ------------------------'
+		assert_nil Ft_Wikipedia.search("fdasrfes3arfaesf")
+		puts '------------------------ Dead End Test End------------------------'
+	end
 
 end
