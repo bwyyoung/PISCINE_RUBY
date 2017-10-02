@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class HelloworldControllerTest < ActionDispatch::IntegrationTest
+class HelloworldControllerTest < ActionController::TestCase
   test "should get helloworld" do
-    get helloworld_helloworld_url
+    get :helloworld
     assert_response :success
   end
 
