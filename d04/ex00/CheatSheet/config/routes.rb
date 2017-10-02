@@ -1,9 +1,27 @@
 Rails.application.routes.draw do
+  root 'cheat#convention'
+  get 'convention' => 'cheat#convention'
+  get 'console' => 'cheat#console'
+  get 'ruby' => 'cheat#ruby'
+  get 'rails' => 'cheat#rails'
+  get 'ruby_concepts' => 'cheat#ruby_concepts'
+  get 'ruby_numbers' => 'cheat#ruby_numbers'
+  get 'ruby_strings' => 'cheat#ruby_strings'
+  get 'ruby_arrays' => 'cheat#ruby_arrays'
+  get 'ruby_hashes' => 'cheat#ruby_hashes'
+  get 'rails_folder_structure' => 'cheat#rails_folder_structure'
+  get 'rails_commands' => 'cheat#rails_commands'
+  get 'rails_erb' => 'cheat#rails_erb'
+  get 'editor' => 'cheat#editor'
+  get 'help' => 'cheat#help'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
