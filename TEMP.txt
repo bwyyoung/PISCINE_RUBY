@@ -1,5 +1,5 @@
 
-
+vogsphere@vogsphere.42.fr:intra/2017/activities/piscine_ruby_on_rails_day_00/byoung-w
 def test_loops
 		puts '------------------------ Loop Test ------------------------'
 		m_wiki = Ft_wikipedia::Ft_wikipedia
