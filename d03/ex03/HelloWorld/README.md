@@ -28,6 +28,7 @@ Exiting
         from bin/rails:3:in `load'
         from bin/rails:3:in `<main>'
 ```
+Therefore, use latest rails above version 5.
 
 ## ETC
 This README would normally document whatever steps are necessary to get the
