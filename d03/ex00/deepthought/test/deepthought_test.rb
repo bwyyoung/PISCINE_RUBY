@@ -1,22 +1,31 @@
-require 'test_helper'
+require_relative 'test_helper.rb'
 
 class DeepthoughtTest < Minitest::Test
 
   def test_class
-    foo = Deepthought::Deepthought.new
-    assert_kind_of(deepthought::deepthought, foo, "")
+	puts '--test_class--'
+	foo = Deepthought::Deepthought.new
+	assert_kind_of(Deepthought::Deepthought, foo,
+				   "Deepthought Object Not Matched")
+	puts '--test_class END--'
   end
 
   def test_respond
-    foo = Deepthought::Deepthought.new
-    question = "The Ultimate Question of Life, the Universe and Everything"
-    assert_equal(foo.respond(question), "42")
-    question = "LOL"
-    assert_equal(foo.respond(question), "Mmmm i'm bored")
+	puts '--test_respond--'
+	foo = Deepthought::Deepthought.new
+	question = "The Ultimate Question of Life, the Universe and Everything"
+	assert_equal(foo.respond(question), "42")
+	question = "Can I have some pussi pls?"
+	assert_equal(foo.respond(question), "Mmmm i'm bored")
+	puts '--test_respond END--'
   end
 
   def test_that_it_has_a_version_number
-    refute_nil ::Deepthought::VERSION
+	  puts '--test_that_it_has_a_version_number--'
+	  refute_nil ::Deepthought::VERSION
+	  puts 'VERSION NUMBER OK: ' + Deepthought::VERSION
+	  puts '--test_that_it_has_a_version_number END--'
+
   end
 end
 #
