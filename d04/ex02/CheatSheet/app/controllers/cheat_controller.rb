@@ -58,6 +58,4 @@ class CheatController < ApplicationController
 		 redirect_to :log_book
 	 end
   end
-
-
 end
