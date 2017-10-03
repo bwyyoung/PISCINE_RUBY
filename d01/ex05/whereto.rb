@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby -w
 
 def whereto
+	# return if argument is not string
+	return unless ARGV.count == 1 && ARGV[0].class == "".class
+	return if ARGV[0].include?(',,')
 	states =
 	{
 		"Oregon" => "OR",
@@ -17,8 +20,6 @@ def whereto
 	}
 	states_inv = states.invert
 	cc_inv = capitals_cities.invert
-	# return if argument is not string
-	return unless ARGV.count == 1 && ARGV[0].class == "".class
 	# split elements by comma and capitalize them in an array
 	arg_elements = ARGV[0].split(",").map{|item| item.strip}
 	arg_elements.each {
