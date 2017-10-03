@@ -29,7 +29,7 @@ def whereto
 		elsif cc_inv.has_key?(elem.capitalize)
 			puts "#{elem.capitalize} is the capital of #{states_inv[cc_inv[elem.capitalize]]} (akr: #{cc_inv[elem.capitalize]})"
 		else
-			puts "#{elem.downcase} is neither a capital city nor a state" unless elem.empty?
+			puts "#{elem.capitalize} is neither a capital city nor a state" unless elem.empty?
 		end
 	}
 end
