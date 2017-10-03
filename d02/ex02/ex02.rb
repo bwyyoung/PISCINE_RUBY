@@ -84,8 +84,8 @@ class Html
 
 	def dump(str)
 		File.open("#{@page_name}.html", 'a+') do |file|
-			tab = file.readlines
-			if tab.any?{|line| line.include?("</body>")}
+			line_list = file.readlines
+			if line_list.any?{|line| line.include?("</body>")}
 				begin
 					raise custom_ex = Body_closed.new(@page_name)
 				rescue => custom_ex
@@ -94,7 +94,7 @@ class Html
 					custom_ex.explain
 				end
 			end			
-			raise "There is no body tag in #{@page_name}.html" if tab.none?{|line| line.include?('<body>')}
+			raise "There is no body tag in #{@page_name}.html" if line_list.none?{|line| line.include?('<body>')}
 			file << "\t<p>#{str}</p>\n"
 		end
 	end
