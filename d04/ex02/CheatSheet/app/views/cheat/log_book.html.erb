@@ -1,2 +1,10 @@
 <% title "Log Book" %>
 
+
+
+
+<%= form_tag("/search", method: "get") do %>
+    <%= label_tag(:q, "Log Diary:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Write") %>
+<% end %>
