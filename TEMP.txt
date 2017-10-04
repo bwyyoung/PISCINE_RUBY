@@ -1,3 +1,10 @@
+
+correct html, and ex05
+
+insert mini test for each file
+
+whereto.rb
+
 http://www.rymcmahon.com/articles/2
 
 

@@ -2,7 +2,7 @@
 
 class Elem
 	attr_reader :tag, :content, :tag_type, :opt
-	def initialize(balise="", content=Array[], tag_type="double",  opt={})
+	def initialize(tag="", content=Array[], tag_type="double",  opt={})
 		@tag =  balisea
 		@content =  content
 		@tag_type =  tag_type

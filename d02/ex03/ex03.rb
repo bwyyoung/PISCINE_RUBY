@@ -78,3 +78,17 @@ class Elem
 		end
 	end
 end
+
+
+if $PROGRAM_NAME == __FILE__
+	body = Elem.new('body')
+	head = Elem.new('head')
+	h1 = Elem.new('h1',Text.new('"Oh no, not again!"'))
+	title = Elem.new('title', Text.new('"Hello ground!"'))
+	img = Elem.new('img', '', 'simple',{'src':'http://i.imgur.com/pfp3T.jpg'})
+	html = Elem.new('html')
+	head.add_content(title)
+	body.add_content(h1, img)
+	puts head
+	puts body
+end
