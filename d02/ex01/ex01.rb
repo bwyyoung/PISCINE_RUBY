@@ -9,25 +9,37 @@ class Html
 	end
 
 	def head
-		raise "A file #{@page_name}.html named already exist!" if File.file?("#{@page_name}.html")
-		File.open("#{@page_name}.html", 'w') { |file|
-		file << "<!DOCTYPE html>\n<html>\n<head>\n<title>#{@page_name}</title>\n</head>\n<body>\n"
-		}
+		begin
+			raise "A file #{@page_name}.html named already exist!" if File.file?("#{@page_name}.html")
+			File.open("#{@page_name}.html", 'w') { |file|
+			file << "<!DOCTYPE html>\n<html>\n<head>\n<title>#{@page_name}</title>\n</head>\n<body>\n"
+			}
+		rescue Exception => e
+			puts e.message
+		end
 	end
 
 	def dump(str)
-		File.open("#{@page_name}.html", 'a+') { |file|
-		tab = file.readlines
-		raise "Body has already been closed in #{@page_name}.html" if tab.any?{|line| line.include?("</body>")}
-		raise "There is no body tag in #{@page_name}.html" if tab.none?{|line| line.include?("<body>")}
-		file << "\t<p>#{str}</p>\n"
-		}
+		begin
+			File.open("#{@page_name}.html", 'a+') { |file|
+			tab = file.readlines
+			raise "Body has already been closed in #{@page_name}.html" if tab.any?{|line| line.include?("</body>")}
+			raise "There is no body tag in #{@page_name}.html" if tab.none?{|line| line.include?("<body>")}
+			file << "\t<p>#{str}</p>\n"
+			}
+		rescue Exception => e
+			puts e.message
+		end
 	end
 
 	def finish
-		File.open("#{@page_name}.html", 'a+') { |file|
-		raise "#{@page_name}.html has already been closed." if file.any?{|line| line.include?("</body>")}
-		file << "</body>"
-		}
+		begin
+			File.open("#{@page_name}.html", 'a+') { |file|
+			raise "#{@page_name}.html has already been closed." if file.any?{|line| line.include?("</body>")}
+			file << "</body>"
+			}
+		rescue Exception => e
+			puts e.message
+		end
 	end
 end

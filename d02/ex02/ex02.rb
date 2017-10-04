@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby -w
 
+
+## BRIAN CORRECTION HTML CLOSE ON ERROR ETC...
 class Body_closed < StandardError
 	attr_reader :page_name
 
