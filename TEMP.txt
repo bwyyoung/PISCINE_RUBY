@@ -1,4 +1,22 @@
 
+Currently evaluating a Html :
+- root element of type "html"
+- Html -> Must contains a Head AND a Body after it
+Head is OK
+Evaluating a multiple node
+Currently evaluating a Text :
+-Text -> Must contains a simple string
+Text content is OK
+Evaluating a multiple node
+Currently evaluating a Text :
+-Text -> Must contains a simple string
+Text content is OK
+Currently evaluating a Img :
+Img content is OK
+               FILE IS OK
+
+
+
 correct html, and ex05
 
 insert mini test for each file

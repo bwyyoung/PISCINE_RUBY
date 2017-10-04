@@ -14,6 +14,7 @@ class Body_closed < StandardError
 	end
 
 	def correct
+		puts "correcting error"
 		tmp = []
 		File.open("#{@page_name}.html", "r") do |file|
 			file.each_with_index do |line, nb_line|
@@ -28,6 +29,7 @@ class Body_closed < StandardError
 
 	def explain
 		puts "> ln :#{@num_line} </body> : text has been inserted and tag moved at the end of it."
+
 	end
 end
 
@@ -94,6 +96,9 @@ class Html
 					custom_ex.show_state
 					custom_ex.correct
 					custom_ex.explain
+					file << "\t<p>#{str}</p>\n"
+					file << "</body>\n"
+					return
 				end
 			end			
 			raise "There is no body tag in #{@page_name}.html" if line_list.none?{|line| line.include?('<body>')}
