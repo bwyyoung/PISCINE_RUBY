@@ -100,8 +100,8 @@ class Body < Elem
 end
 
 class Title < Elem
-	def initialize(content=String, opt={})
-		super("Title", Text.new(content), 'double', opt)
+	def initialize(content, opt={})
+		super("Title", content, 'double', opt)
 	end
 end
 
@@ -160,20 +160,20 @@ class Li < Elem
 end
 
 class H1 < Elem
-	def initialize(content=String, opt={})
-		super("H1", Text.new(content), 'double', opt)
+	def initialize(content, opt={})
+		super("H1", content, 'double', opt)
 	end
 end
 
 class H2 < Elem
-	def initialize(content=String, opt={})
-		super("H2", Text.new(content), 'double', opt)
+	def initialize(content, opt={})
+		super("H2", content, 'double', opt)
 	end
 end
 
 class P < Elem
-	def initialize(content=String, opt={})
-		super("H2", Text.new(content), 'double', opt)
+	def initialize(content, opt={})
+		super("P", content, 'double', opt)
 	end
 end
 
@@ -184,8 +184,8 @@ class Div < Elem
 end
 
 class Span < Elem
-	def initialize(content=String, opt={})
-		super("Span", Text.new(content), 'double', opt)
+	def initialize(content, opt={})
+		super("Span", content, 'double', opt)
 	end
 end
 

@@ -100,8 +100,8 @@ class Body < Elem
 end
 
 class Title < Elem
-	def initialize(content=String, opt={})
-		super("Title", Text.new(content), 'double', opt)
+	def initialize(content, opt={})
+		super("Title", content, 'double', opt)
 	end
 end
 
@@ -160,20 +160,20 @@ class Li < Elem
 end
 
 class H1 < Elem
-	def initialize(content=String, opt={})
-		super("H1", Text.new(content), 'double', opt)
+	def initialize(content, opt={})
+		super("H1", content, 'double', opt)
 	end
 end
 
 class H2 < Elem
-	def initialize(content=String, opt={})
-		super("H2", Text.new(content), 'double', opt)
+	def initialize(content, opt={})
+		super("H2", content, 'double', opt)
 	end
 end
 
 class P < Elem
-	def initialize(content=String, opt={})
-		super("H2", Text.new(content), 'double', opt)
+	def initialize(content, opt={})
+		super("P", content, 'double', opt)
 	end
 end
 
@@ -184,8 +184,8 @@ class Div < Elem
 end
 
 class Span < Elem
-	def initialize(content=String, opt={})
-		super("Span", Text.new(content), 'double', opt)
+	def initialize(content, opt={})
+		super("Span", content, 'double', opt)
 	end
 end
 
@@ -225,8 +225,9 @@ class Page
 	def text_string_only?(text)
 		puts '-Text -> Must contains a simple string'
 		if text.instance_variable_get(:@str)
-			puts 'Text content is OK'
-			return true
+			if text.str.instance_of? String
+				return true
+			end
 		end
 		puts 'Invalid Text: it must only contain a string!'
 	end
@@ -338,7 +339,7 @@ class Page
 			(element.content.last&.instance_of? Body)
 			return true
 		end
-		puts 'Html file invalid. Head and body not detected!'
+		puts 'Html file invalid. Head/body not detected!'
 		return false
 	end
 
@@ -347,8 +348,11 @@ class Page
 			if element.instance_of? check_type
 				puts 'Evaluating element that must only contain text: ' + element.class.name
 				if element.content&.instance_of? Text
-					puts 'Text-Only element is valid'
-					return true
+					if text_string_only?element.content
+						puts 'Text-Only element is valid'
+						return true
+					end
+					return false
 				else
 					puts 'Element is invalid: it contains content other than text'
 					return false
@@ -460,11 +464,23 @@ if $PROGRAM_NAME == __FILE__
 	{'src': Text.new('http://i.imgur.com/pfp3T.jpg')}) ]) ])
 	test = Page.new(toto)
 	test.isvalid?
-
-	exit 1
+	puts '---------------------IMG INVALID-------------------------'
 	tata = Html.new([Head.new([Title.new(Text.new("Hello ground!"))]),
 	Body.new([H1.new(Text.new("Oh no, not again!")), Img.new([],
-	{'src': Text.new('http://i.imgur.com/pfp3T.jpg')}) ]) ])
+	{}) ]) ])
 	test2 = Page.new(tata)
 	test2.isvalid?
+	puts '----------------------NO HEAD------------------------'
+	tata = Html.new(
+   Body.new([H1.new(Text.new("Oh no, not again!")), Img.new([],
+																			  {}) ]) )
+	test2 = Page.new(tata)
+	test2.isvalid?
+	puts '---------------------H1 INVALID-------------------------'
+	toto = Html.new([Head.new([Title.new(Text.new("Hello ground!"))]),
+					 Body.new([
+	H1.new(Span.new("Oh no, not again!")), Img.new([],
+			{'src': Text.new('http://i.imgur.com/pfp3T.jpg')}) ]) ])
+	test = Page.new(toto)
+	test.isvalid?
 end
