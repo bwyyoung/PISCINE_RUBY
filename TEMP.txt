@@ -1,20 +1,46 @@
 
+,Html, Head, Body ,Title,Meta,Img,Table,Th, Tr, Td ,Ul, Ol, Li ,H1, H2, P,Div,Span,Hr,Br
+					#	if element.content.first&.is_a? Title
+
+
 Currently evaluating a Html :
+
 - root element of type "html"
 - Html -> Must contains a Head AND a Body after it
 Head is OK
 Evaluating a multiple node
+
 Currently evaluating a Text :
+
 -Text -> Must contains a simple string
 Text content is OK
 Evaluating a multiple node
+
 Currently evaluating a Text :
+
 -Text -> Must contains a simple string
 Text content is OK
+
 Currently evaluating a Img :
+
 Img content is OK
                FILE IS OK
 
+
+	toto = Html.new([Head.new([Title.new(Text.new("Hello ground!"))]),
+	Body.new([H1.new(Text.new("Oh no, not again!")), Img.new([],
+	{'src': Text.new('http://i.imgur.com/pfp3T.jpg')}) ]) ])
+	test = Page.new(toto)
+
+	test.isvalid? HTML FIRST
+
+	tata = Html.new([Head.new([Title.new(Text.new("Hello ground!"))]),
+	Body.new([H1.new(Text.new("Oh no, not again!")), Img.new([],
+	{'src': Text.new('http://i.imgur.com/pfp3T.jpg')}) ]) ])
+	test2 = Page.new(tata)
+
+
+	test2.isvalid?
 
 
 correct html, and ex05
