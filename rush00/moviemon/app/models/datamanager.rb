@@ -1,0 +1,150 @@
+require 'uri'
+require 'json'
+require 'net/http'
+
+class Datamanager
+	# the class variable @@instance holds
+	# a reference to the singleton object.
+	@@instance = Datamanager.new
+	# the class #instance method returns the
+	# single reference to the object instance.
+	def self.instance
+		@@instance
+	end
+	# The #new method is privatized, disallowing
+	# the creation of additional instances of the
+	# Datamanager class, and limiting instances
+	# of the Datamanager class to the @@instance
+	# variable provided by the #instance method.
+	private_class_method :new
+
+	def initialize
+		self.set_default
+	end
+
+	def set_default
+		@@mapx = 50
+		@@mapy = 50
+		@@coord           = [1.352083, 103.819836]
+		@@movieballs      = 100
+		@@Moviemons       = {}
+		@@My_Moviemons    = []
+		@@MoviemonBattle  = ''
+		@@strength        = 0
+		@@index 		  = 0
+		@@slot = 0
+		@@life = 20
+		@@max_slots = 3
+	end
+
+	def set_value(new_coordinates,
+				  new_movieballs,
+				  new_Moviemons,
+				  new_My_Moviemons,
+				  new_MoviemonBattle,
+				  new_strength = 0,
+				  new_mapx = 50,
+				  new_mapy = 50,
+				  new_index = 0)
+		@@coord           = new_coordinates
+		@@movieballs      = new_movieballs
+		@@Moviemons       = new_Moviemons
+		@@My_Moviemons    = new_My_Moviemons
+		@@MoviemonBattle  = new_MoviemonBattle
+		@@strength        = new_strength
+		@@mapx			= new_mapx
+		@@mapy            = new_mapy
+		@@index			= new_index
+		$player =
+		{
+			slot: @@slot,
+			life: @@life,
+			strength: @@strength,
+			index: @@index,
+			movieballs: @@movieballs,
+			Moviemons: @@Moviemons,
+			My_Moviemons: @@My_Moviemons,
+			MoviemonBattle: '',
+			coord: @@coord,
+			mapx: @@mapy,
+			mapy: @@mapx
+		}
+	end
+
+	def move_coord(cls, x, y)
+		@coord[0] = x
+		@coord[1] = y
+	end
+
+	
+	def modif_movieballs(cls, nb)
+		@@movieballs = nb
+	end
+
+	
+	def add_moviemons(cls, name)
+		@@My_Moviemons.append(name)
+	end
+
+	
+	def del_moviemons(cls, name)
+		@@Moviemons.delete(name)
+	end
+
+	def load_default_settings
+		puts 'load_default_settings'
+		self.set_default
+
+		file = File.read('public/save.json')
+		json_data = JSON.parse(file, :symbolize_names => true)
+		json_data[:movie_list].each{ |elem|
+			r = Net::HTTP.get(URI('http://www.omdbapi.com/?t=' + elem + '&apikey=41f80ff7'))
+			moviemon = JSON.parse(r)
+			@@Moviemons[moviemon['Title'].gsub(' ', '_').gsub(':', '-')] = moviemon
+		}
+		$player = {
+			slot: @@slot,
+			life: @@life,
+			strength: @@strength,
+			index: @@index,
+			movieballs: @@movieballs,
+			Moviemons: @@Moviemons,
+			My_Moviemons: @@My_Moviemons,
+			MoviemonBattle: '',
+			coord: @@coord,
+			mapx: @@mapy,
+			mapy: @@mapx
+		}
+		File.open('public/save.json', 'w+') do |f|
+			@@max_slots.times{|x|
+				$player[:slot] = x
+				json_data[x] = $player
+			}
+			f.write(JSON.pretty_generate(json_data))
+		end
+	end
+
+	def load
+		unless File.exist?('public/save.json')
+			load_default_settings
+		end
+		file = File.read('public/save.json')
+		save_data = JSON.parse(file, :symbolize_names => true)
+		$player = save_data[$player[:slot]]
+	end
+
+	def save
+		unless File.exist?('public/save.json')
+			load_default_settings
+		end
+		array_data = JSON.parse(File.read('public/save.json'))
+		File.open('public/save.json', 'w+') do |f|
+			array_data[$player[:slot]] = $player
+			f.write(JSON.pretty_generate(array_data))
+		end
+	end
+
+	def get_movie(my_movie)
+		return @@My_Moviemons[my_movie]
+	end
+end

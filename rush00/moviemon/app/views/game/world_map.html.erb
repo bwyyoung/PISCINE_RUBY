@@ -1,3 +1,14 @@
-<div class="map">
-	<%= image_tag("avatar.png", class: 'player', style: "top:#{$player[:position][1]}%;left:#{$player[:position][0]}%")%>
+<img src="
+	https://maps.googleapis.com/maps/api/staticmap?center=<%=latitude%>,<%=longitude%>&zoom=15&tile=0&size=300x300&maptype=roadmap&key=AIzaSyAaI6GsGp-nmqzU67hLXNlqpqE94i7UvTQ
+	" class="vuemap noisy ">
+<div class="player"></div>
+<% if game_state == "attack" %>
+    <div class="message">
+      <%=movietitle%> has AMBUSHED YOU!</div>
+    <% end %>
+<div class="moviballs"> MovieBalls: <%=movieball%>
+  <% if game_state == "ball" %>
+      -> +1 MovieBall
+  <% end %>
+  <div class="coord">[<%=mapx%> : <%=mapy%>]</div>
 </div>

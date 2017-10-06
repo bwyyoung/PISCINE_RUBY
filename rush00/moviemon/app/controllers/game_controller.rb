@@ -1,21 +1,28 @@
-#require '../models/game_sessions.rb'
+
+require_relative '../models/datamanager.rb'
 
 class GameController < ApplicationController
   $view ||= 'title_screen'
 
   $player ||= {
-    slot: 1, 
-    position: [0, 0], 
-    life: 20, 
-    strength: 5, 
-    moviedex: [],
-    index: 0
+    slot: 1,
+    life: 20,
+    strength: 5,
+    index: 0,
+	movieballs: 100,
+	Moviemons: {},
+	My_Moviemons: [],
+	MoviemonBattle: '',
+	coord: [1.352083, 103.819836],
+	mapx: 50,
+	mapy: 50
   }
 
   def title_screen
   end
 
   def shutdown
+
   end
 
   def loading_game
@@ -28,6 +35,7 @@ class GameController < ApplicationController
   end
 
   def battle
+
   end
 
   def moviedex
@@ -46,20 +54,12 @@ class GameController < ApplicationController
   end
 
   def power
-    if $view == 'shutdown'
+	  Datamanager.instance.load
+	  if $view == 'shutdown'
       $view = 'title_screen'
       redirect_to :"#{$view}"
     else
       $view = 'shutdown'
-      $player = {
-        slot: 1,
-        position: [0, 0], 
-        life: 20, 
-        strength: 5, 
-        moviedex: [],
-        index: 0,
-        movies: []
-      }
       redirect_to :"#{$view}"
     end
   end
@@ -68,32 +68,16 @@ class GameController < ApplicationController
     case $view
     when "saving_game"
       $view = "world_map"
-      GameSession.new.save
+      Datamanager.instance.save
       redirect_to world_map_path
     when "loading_game"
       $view = "world_map"
-      GameSession.new.load
+      Datamanager.instance.load
       redirect_to world_map_path
     when "coward", "victory", "lose"
       $view = "world_map"
       redirect_to world_map_path
     when "battle"
-      $selected[:life] = $selected[:life] - $player[:strength]
-      if $selected[:life] <= 0
-        $view = "victory"
-        $player[:life] = 20
-        $player[:moviedex].push($selected)
-        $player[:strength] += 1
-        $selected = ""
-      else
-        $player[:life] = $player[:life] - $selected[:strength]
-        if $player[:life] <= 0
-          $view, $selected, $player[:life]  = "lose", "", 20
-          # $view,  = "lose"
-          # $selected = ""
-          # $player[:life] = 20
-        end
-      end
       redirect_to :"#{$view}"
     else
       redirect_to :"#{$view}"
@@ -102,9 +86,7 @@ class GameController < ApplicationController
 
   def buttonB
     if $view == "battle"
-      $selected = ""
-      $player[:life] = 20
-      $view = "coward"
+
     end
     redirect_to :"#{$view}"
   end
@@ -133,38 +115,21 @@ class GameController < ApplicationController
 
   def start
     case $view
-    when "title_screen" #launch new game
-      imdb = GameSession.new.get_movie
-      $player = {
-        slot: 1, 
-        position: [0, 0], 
-        life: 20, 
-        strength: 5, 
-        movies: imdb, 
-        index: 0, 
-        moviedex: []
-      }
-      $view = "world_map"
-      redirect_to :"#{$view}"
-    when "world_map"
-      $view = "moviedex"
-      redirect_to :"#{$view}"   
-    else
-      redirect_to :"#{$view}"
+		when "title_screen" #launch new game
+		  redirect_to :"#{$view}"
+		when "world_map"
+		  redirect_to :"#{$view}"
+		else
+		  redirect_to :"#{$view}"
     end
   end
 
   def up
     case $view
     when "world_map"
-      $player[:position][1] = $player[:position][1] < 10 ? $player[:position][1] : $player[:position][1] -= 10
-      if rand(100) > 60 && $player[:position][0] < 90 && $player[:movies].length > 0
-        $view = "battle"
-        $selected = $player[:movies].pop
-      end
+
       redirect_to :"#{$view}"
     when "loading_game", "saving_game"
-      $player[:slot] = $player[:slot] > 1 ? $player[:slot] - 1 : 3
       redirect_to :"#{$view}"
     else
       redirect_to :"#{$view}"
@@ -174,11 +139,7 @@ class GameController < ApplicationController
   def down
     case $view
     when "world_map" 
-      $player[:position][1] = $player[:position][1] > 80 ? $player[:position][1] : $player[:position][1] += 10
-      if rand(100) > 60 && $player[:position][1] < 90 && $player[:movies].length > 0
-        $view = "battle"
-        $selected = $player[:movies].pop
-      end
+
       redirect_to :"#{$view}"
     when "loading_game", "saving_game"
       $player[:slot] = $player[:slot] < 3 ? $player[:slot] + 1 : 1
@@ -191,19 +152,11 @@ class GameController < ApplicationController
   def right
     case $view
     when "world_map" 
-      $player[:position][0] = $player[:position][0] > 80 ? $player[:position][0] : $player[:position][0] += 10
-      if rand(100) > 60 && $player[:position][0] < 90 && $player[:movies].length > 0
-        $view = "battle"
-        $selected = $player[:movies].pop
-      end
+
       redirect_to :"#{$view}"
     when "moviedex"
-      my_index = $player[:index]
-      my_index < ($player[:moviedex].length - 1) ? my_index = my_index + 1: my_index = 0
-      $player[:index] = my_index
+
       redirect_to :"#{$view}"
-    # when "loading_game", "saving_game"
-    #   redirect_to :"#{$view}"
     else
       redirect_to :"#{$view}"
     end
@@ -212,20 +165,10 @@ class GameController < ApplicationController
   def left
     case $view
     when "world_map" 
-      $player[:position][0] = $player[:position][0] < 10 ? $player[:position][0] : $player[:position][0] -= 10
-      if rand(100) > 60 && $player[:position][0] < 90 && $player[:movies].length > 0
-        $view = "battle"
-        $selected = $player[:movies].pop
-      end
+
       redirect_to :"#{$view}"
     when "moviedex"
-      my_index = $player[:index]
-      my_index < ($player[:moviedex].length - 1) ? my_index = my_index - 1: my_index = 0
 
-      $player[:index] = my_index
-      redirect_to :"#{$view}"
-    # when "loading_game", "saving_game"
-    #   redirect_to :"#{$view}"
     else
       redirect_to :"#{$view}"
     end
