@@ -1,15 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'taillste/version'
+require 'Taillste/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "taillste"
+  spec.name          = "Taillste"
   spec.version       = Taillste::VERSION
-  spec.authors       = ["sballet"]
-  spec.email         = ["sballet@student.42.fr"]
-
-  spec.summary       = %q{Gem a but pedagogique}
+  spec.authors       = ["Brian YOUNG WEI YAN"]
+  spec.email         = ["byoung-w@student.42.fr"]
+  spec.homepage      = "http://brianyoung.me"
+  spec.description   = "Taillste"
+  spec.summary       = "Gem for Taillste ex02 d03"
   spec.license       = "MIT"
 
 

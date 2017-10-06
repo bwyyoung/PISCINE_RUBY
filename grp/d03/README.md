@@ -1,7 +1,7 @@
 # Taillste
 
 ```ruby
-gem 'taillste'
+gem 'Taillste'
 ```
 
 ## Usage
