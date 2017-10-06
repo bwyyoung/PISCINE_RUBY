@@ -1,0 +1,16 @@
+<div class="battle">
+	<div>
+		<div class="monster">
+			<h2><%= $selected[:title]%></h2>
+			<h3>Life: <%= $selected[:life] %></h3>
+			<h3>Director: <%= $selected[:director] %></h3>
+			<h3>My life: <%= $player[:life] %></h3>
+		</div>
+		<div class="poster"><img src="<%= $selected[:poster] %>" /></div>
+		<div class="cmd">
+			<span>[A] - Fight!</span>
+			<span>[B] Run...</span>
+		</div>
+	</div>
+	<%= image_tag("battle.png", class: 'battle')%>
+</div>

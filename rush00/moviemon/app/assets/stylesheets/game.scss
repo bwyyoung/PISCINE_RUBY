@@ -1,0 +1,530 @@
+
+body
+{
+  background: url('background_wallpaper.jpg')
+  no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+
+.game_area
+{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  align-items: center;
+  justify-content: center;
+}
+.game_area2
+{
+  height: 50%;
+  padding: 0;
+  margin: 0;
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+
+.row {
+  width: auto;
+  justify-content: center;
+}
+.row2 {
+  padding-top: 23%;
+}
+
+.game_area-logo{
+  align-self: flex-start;
+  position:relative;
+  background-image:url("logo.png") ;
+  width: 538px;
+  height: 145px;
+}
+.game_area-gameview{
+  position:relative;
+  background-image:url("gameboy.png") ;
+  width: 575px;
+  height: 943px;
+  background-size:cover;
+}
+
+#backview{
+  position:relative;
+  padding-top: 20px;
+  height: 50%;
+  width: 100%;
+}
+
+#splash_screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.game_area-gameview-screen{
+  align-self: flex-start;
+  justify-content: center;
+  background-color: #FFFF00;
+  background: url("splash_screen.jpg");
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  overflow: hidden;
+  color: #fff;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  max-width:298px;
+  max-height:268px;
+  width:298px;
+  height:268px;
+}
+
+.read_text
+{
+  background-color: #000000
+}
+
+.game_area-gameview-screen #battle_screen{
+  background: url("battle.png");
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+.game_area-gameview-screen #moviedex_detail{
+  background: url("moviedex.jpg");
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+.game_area-gameview-screen #options{
+  background: url("options.jpg");
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+
+.control_area{
+  height: 31%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+.d_pad
+{
+  padding-top: 20%;
+  padding-left: 15%;
+  margin-right: auto;
+}
+.buttons_a_b
+{
+  padding-top: 20%;
+  padding-right: 15%;
+  margin-left: auto;
+}
+
+
+.control
+{
+
+}
+
+.control a {
+  color: transparent;
+}
+.control #btn_up{
+  left: 60px;
+  bottom: 63px;
+}
+.control #btn_down{
+  left: 59px;
+  bottom: 21px;
+}
+.control #btn_right{
+  left: 79px;
+  bottom: 42px;
+}
+
+.control #btn_left{
+  left: 37px;
+  bottom: 42px;
+}
+
+
+.control #btn_a{
+  left: 259px;
+  bottom: 58px;
+  height: 25px;
+  width: 40px;
+}
+
+.control #btn_b{
+  left: 223px;
+  bottom: 42px;
+  height: 25px;
+  width: 30px;
+}
+
+.control_area-lower
+{
+  padding: 0;
+  margin: 0;
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  justify-content: space-between;
+
+  width: 100%;
+  height: 18% !important;
+}
+
+.control_btn_select{
+  width: 10%;
+  padding-left: 30%;
+  margin-right: auto;
+}
+
+.control_btn_start{
+  width: 10%;
+  padding-right: 40%;
+  margin-left: auto;
+}
+
+.player{
+  background-image: url("avatar.png");
+  width: 55px;
+  height: 72px;
+  background-size: cover;
+  top: 24%;
+  left: 45%;
+  position: absolute;
+}
+
+.moviballs{
+  position: absolute;
+  top: 40%;
+  left: 28%;
+  height: 25px;
+  width: 253px;
+  color: #fff;
+  background-color: #333;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.message {
+  position: absolute;
+  top: 28%;
+  left: 31%;
+  width: 190px;
+  background: #333;
+  height: 89px;
+  text-align: center;
+  padding: 10px;
+  opacity: 0.6;
+}
+
+.coord {
+  position: absolute;
+  right: -5px;
+  bottom: 249px;
+  background-color: #333;
+  opacity: 0.8;
+}
+
+.imgmon{
+  background-size: cover;
+  width: 51px;
+  height: 77px;
+  float: left;
+}
+
+.tuning {
+  border:1px solid #f00;
+}
+.miniaturedetail {
+  position: absolute;
+  top: 14%;
+  right: 24%;
+  font-size: 0.8em;
+  width: 27%;
+  height: 29%;
+}
+
+.poster{
+  background-size: cover;
+  width: 141px;
+  height: 211px;
+  position: absolute;
+}
+
+p.test{
+  font-weight: bold;
+  color: #f95;
+  text-decoration: underline;
+}
+
+/*#########################################*/
+
+
+
+
+	.container {
+		padding-top: 20px;
+		height: 1100px;
+		width: 700px;
+		position: relative;
+	}
+	.screen {
+		position: absolute;
+		height: 315px;
+		width: 360px;
+		top: 169px;
+		left: 169px;
+	}
+	.screen h1 {
+		text-align: center;
+		font-size: 24px;
+		margin-bottom: -16px;
+	}
+	.screen div {
+		height: 100%;
+		width: 100%;
+		position: relative;
+	}
+	.screen div.shutdown {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	.screen div.title_screen {
+		background-color: rgba(0, 0, 0, 0);
+		text-align: center;
+		font-size: 18px;
+	}
+	img.map, img.battle, img.moviedex {
+		height: 100%;
+		border-radius: 4px;
+		overflow: hidden;
+	}
+	img.map {
+		width: 100%;
+	}
+	.map, .battle, .moviedex {
+		border-radius: 4px;
+	}
+
+	.battle {
+		overflow: hidden;
+		position: relative;
+	}
+
+	.battle div, .summary {
+		z-index: 100;
+	}
+
+	.summary h1{
+		margin-top: 140px;
+		
+	}
+	.summary h2 {
+		font-size: 19px;
+		text-align: center;
+		margin-bottom: -38px;
+	}
+
+	.summary p {
+		text-align: center;
+		margin-top: 130px;
+	}
+
+	.poster {
+		width: 170px !important;
+		height: 250px !important;
+		float: right;
+		display: inline-block;
+		margin-top: -100px;
+	}
+
+
+	.poster img {
+		height: auto;
+		width: 90%;
+		padding: 10px;
+		overflow: hidden;
+	}
+
+	.monster {
+		height: 250px !important;
+		width: 170px !important;
+		text-align: center;
+		float: left;
+		display: inline-block;
+		margin-top: -100px;	
+	}
+
+	.monster table {
+		margin: 0 0 10px 12px;
+	}
+
+	.monster td {
+		padding: 2px;
+	}
+
+	.monster h2 {
+		margin: 20px 0 4px;
+	}
+
+	.monster h3, .monster h4 {
+		margin: 0;
+	}
+	.moviedex .infos {
+		background-color: rgba(255, 0, 0, 0.3);
+		position: absolute;
+		z-index: 100;
+	}
+	.moviedex .monster {
+		width: 190px !important;
+	}
+
+	.cmd {
+		margin-top: 100px;
+	}
+
+	.cmd span:first-child {
+		float: left;
+		margin-top: 20px;
+		padding: 8px 28px;
+
+	}
+
+	.cmd span:last-child {
+		float: right;
+		margin-top: 20px;
+		padding: 8px 28px;
+	}
+
+	.moviedex {
+		overflow: hidden;
+	}
+	.moviedex .monster {
+		margin-top: -4px;
+	}
+
+	.moviedex .poster {
+		margin-top: 0px;
+	}
+
+	img.battle {
+		position: absolute;
+		margin: auto; 
+		min-height: 100%;
+		min-width: 100%;
+		left: -100%;
+		right: -100%;
+		top: -100%;
+		bottom: -100%;
+	}
+
+	img.moviedex {
+		position: absolute;
+		height: auto;
+		width: 100%;
+		min-height: 100%;
+		min-width: 100%;
+	}
+
+	.player {
+		position: absolute;
+		width: 10%;
+		height: 10%;
+		top: 0%;
+		left: 0%;
+	}
+
+	.save_slot {
+		margin: 26px;
+		padding: 20px;
+		height: 20px !important;
+		width: auto !important;
+		background-color: rgba(0, 0, 0, 0.15);
+	}
+	.save_slot.selected
+	{
+		font-style: inherit;
+		background-color: rgba(0, 0, 0, 0.3);
+	}
+
+	.gb_title {
+		width: 70%;
+		margin: 40px auto;
+
+	}
+
+	.light {
+		position: absolute;
+		background-color: rgba(255, 0, 0, 0.3);
+		height: 18px;
+		width: 18px;
+		top: 267px;
+		left: 95px;
+		border-radius: 50%;
+		display: block;
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.light.off {
+		display: none;
+  		visibility: hidden;
+  		opacity: 0;
+	}
+
+	.gameboy {
+		background: url("gameboy.png") center no-repeat;
+		background-size: cover;
+		width: 100%;
+		height: 100%;
+	}
+	.gb {
+		width: 100%;
+		height: 100%;
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  opacity: 0;
+	}
+	area {
+		display: block;
+		outline: none;
+		background-color: rgba(0, 255, 0, 0.3);
+	}
+
+@media (max-width: 720px) {
+  .container {
+  	display: none;
+  	visibility: hidden;
+  	opacity: 0;
+  }
+}

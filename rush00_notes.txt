@@ -1,0 +1,7 @@
+	<%= image_tag("map.jpg", class: 'map')%>
+       <!--- <%= image_tag("gameboy.png", class: 'gb', usemap: '#buttons_map') %>-->
+   <% if $view == "shutdown" %>
+            <span class="light off"></span>
+        <% else %>
+            <span class="light"></span>
+        <% end %>
