@@ -1,14 +1,14 @@
 <img src="
-	https://maps.googleapis.com/maps/api/staticmap?center=<%=latitude%>,<%=longitude%>&zoom=15&tile=0&size=300x300&maptype=roadmap&key=AIzaSyAaI6GsGp-nmqzU67hLXNlqpqE94i7UvTQ
+	https://maps.googleapis.com/maps/api/staticmap?center=<%=$player[:coord][0]%>,<%=$player[:coord][1]%>&zoom=15&tile=0&size=300x300&maptype=roadmap&key=AIzaSyAaI6GsGp-nmqzU67hLXNlqpqE94i7UvTQ
 	" class="vuemap noisy ">
 <div class="player"></div>
-<% if game_state == "attack" %>
+<% if @game_state == "attack" %>
     <div class="message">
-      <%=movietitle%> has AMBUSHED YOU!</div>
+      <%=@movietitle%> has AMBUSHED YOU!</div>
     <% end %>
-<div class="moviballs"> MovieBalls: <%=movieball%>
-  <% if game_state == "ball" %>
+<div class="moviballs"> MovieBalls: <%=$player[:movieballs]%>
+  <% if @game_state == "ball" %>
       -> +1 MovieBall
   <% end %>
-  <div class="coord">[<%=mapx%> : <%=mapy%>]</div>
+  <div class="coord">[<%=$player[:mapx]%> : <%=$player[:mapy]%>]</div>
 </div>

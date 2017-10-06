@@ -21,6 +21,19 @@ class Datamanager
 	def initialize
 		self.set_default
 	end
+	
+	@@movie_list =[
+		'Aliens',
+		'The_Rocky_Horror_Picture_Show',
+		'Hellboy',
+		'Manos-_The_Hands_of_Fate',
+		'Freddy',
+		'Avatar',
+		'Horror',
+		'Terror',
+		'Saw',
+		'Pride_and_Prejudice_and_Zombies'
+	]
 
 	def set_default
 		@@mapx = 50
@@ -35,6 +48,19 @@ class Datamanager
 		@@slot = 0
 		@@life = 20
 		@@max_slots = 3
+		$player = {
+			slot: @@slot,
+			life: @@life,
+			strength: @@strength,
+			index: @@index,
+			movieballs: @@movieballs,
+			Moviemons: @@Moviemons,
+			My_Moviemons: @@My_Moviemons,
+			MoviemonBattle: '',
+			coord: @@coord,
+			mapx: @@mapy,
+			mapy: @@mapx
+		}
 	end
 
 	def set_value(new_coordinates,
@@ -91,30 +117,30 @@ class Datamanager
 		@@Moviemons.delete(name)
 	end
 
-	def load_default_settings
-		puts 'load_default_settings'
+	def reset_default_settings
+		puts 'reset_default_settings'
 		self.set_default
-
-		file = File.read('public/save.json')
-		json_data = JSON.parse(file, :symbolize_names => true)
-		json_data[:movie_list].each{ |elem|
+		@@movie_list.each{ |elem|
 			r = Net::HTTP.get(URI('http://www.omdbapi.com/?t=' + elem + '&apikey=41f80ff7'))
 			moviemon = JSON.parse(r)
 			@@Moviemons[moviemon['Title'].gsub(' ', '_').gsub(':', '-')] = moviemon
 		}
-		$player = {
-			slot: @@slot,
-			life: @@life,
-			strength: @@strength,
-			index: @@index,
-			movieballs: @@movieballs,
-			Moviemons: @@Moviemons,
-			My_Moviemons: @@My_Moviemons,
-			MoviemonBattle: '',
-			coord: @@coord,
-			mapx: @@mapy,
-			mapy: @@mapx
-		}
+		$player =
+			{
+				slot: @@slot,
+				life: @@life,
+				strength: @@strength,
+				index: @@index,
+				movieballs: @@movieballs,
+				Moviemons: @@Moviemons,
+				My_Moviemons: @@My_Moviemons,
+				MoviemonBattle: '',
+				coord: @@coord,
+				mapx: @@mapy,
+				mapy: @@mapx
+			}
+		json_data = {}
+		json_data['movie_list'] = @@movie_list
 		File.open('public/save.json', 'w+') do |f|
 			@@max_slots.times{|x|
 				$player[:slot] = x
@@ -126,7 +152,7 @@ class Datamanager
 
 	def load
 		unless File.exist?('public/save.json')
-			load_default_settings
+			reset_default_settings
 		end
 		file = File.read('public/save.json')
 		save_data = JSON.parse(file, :symbolize_names => true)
@@ -135,7 +161,7 @@ class Datamanager
 
 	def save
 		unless File.exist?('public/save.json')
-			load_default_settings
+			reset_default_settings
 		end
 		array_data = JSON.parse(File.read('public/save.json'))
 		File.open('public/save.json', 'w+') do |f|

@@ -5,7 +5,12 @@ class FtWikipediaTest < Minitest::Test
 
 	def test_road_to_philosophy
 		puts '------------------------ test_Road_to_Philosophy ------------------------'
+		begin
 		m_wiki = Ft_wikipedia::Ft_wikipedia
+		m_wiki.search('42 (number)')
+		rescue => error
+		end
+		puts '----------'
 		begin
 		m_wiki.search('Philosophy')
 		rescue => error

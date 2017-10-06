@@ -2,177 +2,143 @@
 require_relative '../models/datamanager.rb'
 
 class GameController < ApplicationController
-  $view ||= 'title_screen'
 
-  $player ||= {
-    slot: 1,
-    life: 20,
-    strength: 5,
-    index: 0,
-	movieballs: 100,
-	Moviemons: {},
-	My_Moviemons: [],
-	MoviemonBattle: '',
-	coord: [1.352083, 103.819836],
-	mapx: 50,
-	mapy: 50
-  }
+	respond_to? :html
+	$view ||= 'title_screen'
 
-  def title_screen
-  end
+	$player ||= {
+		slot: 1,
+		life: 20,
+		strength: 5,
+		index: 0,
+		movieballs: 100,
+		Moviemons: {},
+		My_Moviemons: [],
+		MoviemonBattle: '',
+		coord: [1.352083, 103.819836],
+		mapx: 50,
+		mapy: 50
+	}
+	@@MAP_MIN= 0
+	@@MAP_MAX = 100
+	@@gs_walking = 'walking'
+	@@param_control = 'control'
+	@@button_a = 'buttonA'
+	@@button_b = 'buttonB'
+	@@button_up = 'up'
+	@@button_down = 'down'
+	@@button_left = 'left'
+	@@button_right = 'right'
+	@@button_start = 'start'
+	@@button_select = 'select'
+	@@button_shutdown = 'power'
+	@@server_started = false
 
-  def shutdown
+	@@url_moviedex = 'moviedex'
+	@@url_title_screen = 'title_screen'
+	@@url_shutdown = 'shutdown'
+	@@url_load = 'loading_game'
+	@@url_save = 'saving_game'
+	@@url_world_map = 'world_map'
+	@@url_battle = 'battle'
+	@@url_moviedex_detail = 'moviedex_detail'
 
-  end
 
-  def loading_game
-  end
+	def title_screen
+		unless @@server_started
+			unless File.exist?('public/save.json')
+				Datamanager.instance.reset_default_settings
+			end
+			@@server_started = true
+		end
+		puts 'calling title screen'
+		puts params[@@param_control]
+		case params[@@param_control]
+			when @@button_shutdown
+				puts 'calling shutdown from title screen'
+				shutdown
+			when @@button_start
+				Datamanager.instance.set_default
+				redirection @@url_world_map
+			when @@button_select
+				redirection  @@url_load
+		end
+	end
 
-  def saving_game
-  end
+	def redirection(url)
+		$view = url
+		redirect_to :"#{$view}"
+	end
 
-  def world_map
-  end
+	def shutdown
+		Datamanager.instance.set_default
+		redirection @@url_title_screen
+	end
 
-  def battle
+	def loading_game
+	end
 
-  end
+	def saving_game
 
-  def moviedex
-    # puts "player moviex" + $player[:moviedex]
-    @film = $player[:moviedex][$player[:index]] unless $player[:index].nil?
-    # puts $player[:moviedex][ $player[:index] ]
-  end
+	end
 
-  def victory
-  end
+	def world_map
+		puts 'calling world map'
+		@game_state = @@gs_walking
+		puts params[@@param_control]
+		case params[@@param_control]
+			when @@button_shutdown
+				shutdown
+			when @@button_a
+			when @@button_b
+			when @@button_left
+				if $player[:mapx] > @@MAP_MIN
+					$player[:mapx] -= 1
+					$player[:coord][1] -= 0.0010
+				end
+			when @@button_right
+				if $player[:mapx] < @@MAP_MAX
+					$player[:mapx] += 1
+					$player[:coord][1] += 0.0010
+				end
+			when @@button_down
+				if $player[:mapy] > @@MAP_MIN
+					$player[:mapy] -= 1
+					$player[:coord][0] -= 0.0010
+				end
+			when @@button_up
 
-  def lose
-  end
+				if $player[:mapy] < @@MAP_MAX
+					$player[:mapy] += 1
+					$player[:coord][0] += 0.0010
+				end
+			when @@button_select
+				redirection @@url_save
+			when @@button_start
+				redirection @@url_moviedex
+		end
+	end
 
-  def coward
-  end
+	def battle
 
-  def power
-	  Datamanager.instance.load
-	  if $view == 'shutdown'
-      $view = 'title_screen'
-      redirect_to :"#{$view}"
-    else
-      $view = 'shutdown'
-      redirect_to :"#{$view}"
-    end
-  end
+	end
 
-  def buttonA
-    case $view
-    when "saving_game"
-      $view = "world_map"
-      Datamanager.instance.save
-      redirect_to world_map_path
-    when "loading_game"
-      $view = "world_map"
-      Datamanager.instance.load
-      redirect_to world_map_path
-    when "coward", "victory", "lose"
-      $view = "world_map"
-      redirect_to world_map_path
-    when "battle"
-      redirect_to :"#{$view}"
-    else
-      redirect_to :"#{$view}"
-    end
-  end
+	def moviedex
+		# puts "player moviex" + $player[:moviedex]
+		@film = $player[:moviedex][$player[:index]] unless $player[:index].nil?
+		# puts $player[:moviedex][ $player[:index] ]
+	end
 
-  def buttonB
-    if $view == "battle"
+	def victory
+	end
 
-    end
-    redirect_to :"#{$view}"
-  end
+	def lose
+	end
 
-  def select
-    case $view
-    when "title_screen"
-      $view = 'loading_game'
-      redirect_to :"#{$view}"
-    when "moviedex"
-      $view = "world_map"
-      redirect_to :"#{$view}"      
-    when "world_map"
-      $view = "saving_game"
-      redirect_to :"#{$view}"      
-    when "saving_game"
-      $view = "world_map"
-      redirect_to :"#{$view}"
-    when "loading_game"
-      $view = "title_screen"
-      redirect_to :"#{$view}"
-    else
-      redirect_to :"#{$view}"
-    end
-  end
+	def coward
+	end
 
-  def start
-    case $view
-		when "title_screen" #launch new game
-		  redirect_to :"#{$view}"
-		when "world_map"
-		  redirect_to :"#{$view}"
-		else
-		  redirect_to :"#{$view}"
-    end
-  end
 
-  def up
-    case $view
-    when "world_map"
 
-      redirect_to :"#{$view}"
-    when "loading_game", "saving_game"
-      redirect_to :"#{$view}"
-    else
-      redirect_to :"#{$view}"
-    end
-  end
 
-  def down
-    case $view
-    when "world_map" 
-
-      redirect_to :"#{$view}"
-    when "loading_game", "saving_game"
-      $player[:slot] = $player[:slot] < 3 ? $player[:slot] + 1 : 1
-      redirect_to :"#{$view}"
-    else
-      redirect_to :"#{$view}"
-    end
-  end
-
-  def right
-    case $view
-    when "world_map" 
-
-      redirect_to :"#{$view}"
-    when "moviedex"
-
-      redirect_to :"#{$view}"
-    else
-      redirect_to :"#{$view}"
-    end
-  end
-
-  def left
-    case $view
-    when "world_map" 
-
-      redirect_to :"#{$view}"
-    when "moviedex"
-
-    else
-      redirect_to :"#{$view}"
-    end
-
-  end
-  
 end

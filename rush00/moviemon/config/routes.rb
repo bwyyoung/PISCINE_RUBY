@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get '/buttonA' => 'game#buttonA'
   get '/buttonB' => 'game#buttonB'
 
-  root 'game#power'
+  root 'game#title_screen'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
