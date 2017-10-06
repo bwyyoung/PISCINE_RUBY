@@ -14,31 +14,57 @@
       </div>
     </header>
     <div class="game_area-gameview">
-
+      <div class="controller">
+        <a href="/power"> <div class="controller" id="btn_power" >
+          <span class="read_text">POWER</span></div></a>
+      </div>
       <div class="game_area2">
         <div class="row2">
-        <div class="game_area-gameview-screen">
-          <%= yield %>
-        </div>
+          <div class="game_area-gameview-screen">
+            <%= yield %>
+          </div>
         </div>
       </div>
-        <%= image_tag("gameboy.png", class: 'gb', usemap: '#buttons_map') %>
-
-        <map name="buttons_map">
-          <area shape="rect" coords="90,4,210,50" href="/power" alt="power">
-          <area shape="circle" coords="596,710,42" href="/buttonA" alt="A">
-          <area shape="circle" coords="486,756,42" href="/buttonB" alt="B">
-
-          <area shape="rect" coords="116,660,176,720" href="/up" alt="up">
-          <area shape="rect" coords="174,716,234,770" href="/right" alt="right">
-          <area shape="rect" coords="116,768,176,822" href="/down" alt="down">
-          <area shape="rect" coords="64,716,120,770" href="/left" alt="left">
-
-          <area shape="poly" coords="210,910,292,872,298,894,220,928" href="/select" alt="select">
-          <area shape="poly" coords="330,910,404,872,414,894,340,928" href="/start" alt="start">
-        </map>
+      <div class="controller"></div>
+      <div class="control_area">
+        <div class="d_pad">
+          <div class="controller">
+            <a href="/up"> <div class="controller" id="btn_up" >
+              <span class="read_text">UP</span></div></a>
+            <a href="/down"> <div class="controller" id="btn_down" >
+              <span class="read_text">DOWN</span></div></a>
+            <div class="controller" id="btn_right" >
+              <a href="/right">
+                <span class="read_text">RIGHT</span>
+              </a>
+            </div>
+            <a href="/left"> <div class="controller" id="btn_left" >
+              <span class="read_text">LEFT</span></div></a>
+          </div>
+        </div>
+        <div class="buttons_a_b">
+          <div class="controller">
+            <a href="/buttonA"> <div class="controller" id="btn_a">
+              <span class="read_text">BTN_A</span></div></a>
+            <a href="/buttonB"> <div class="controller"  id="btn_b">
+							<span class="read_text">BTN_B
+							</span></div></a>
+          </div>
+        </div>
+      </div>
+      <div class="control_area-lower">
+        <div class="control_btn_select">
+          <a href="select">
+							<span class="read_text">SELECT
+							</span></a>
+        </div>
+        <div class="control_btn_start">
+          <a href="/start">
+            <span class="read_text">START</span></a>
+        </div>
       </div>
     </div>
+  </div>
 </div>
 </body>
 </html>

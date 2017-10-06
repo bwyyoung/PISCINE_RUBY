@@ -1,3 +1,18 @@
+
+ buttonB
+ <%= image_tag("gameboy.png", class: 'gb', usemap: '#buttons_map') %>
+        <map name="buttons_map">
+          <area shape="rect" coords="90,4,210,50" href="/power" alt="power">
+          <area shape="circle" coords="596,710,42" href="/buttonA" alt="A">
+          <area shape="circle" coords="486,756,42" href="/buttonB" alt="B">
+          <area shape="rect" coords="116,660,176,720" href="/up" alt="up">
+          <area shape="rect" coords="174,716,234,770" href="/right" alt="right">
+          <area shape="rect" coords="116,768,176,822" href="/down" alt="down">
+          <area shape="rect" coords="64,716,120,770" href="/left" alt="left">
+          <area shape="poly" coords="210,910,292,872,298,894,220,928" href="/select" alt="select">
+          <area shape="poly" coords="330,910,404,872,414,894,340,928" href="/start" alt="start">
+        </map>
+
 	<%= image_tag("map.jpg", class: 'map')%>
        <!--- <%= image_tag("gameboy.png", class: 'gb', usemap: '#buttons_map') %>-->
    <% if $view == "shutdown" %>
@@ -5,3 +20,5 @@
         <% else %>
             <span class="light"></span>
         <% end %>
+
+

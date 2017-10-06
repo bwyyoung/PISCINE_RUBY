@@ -95,7 +95,8 @@ body
 
 .read_text
 {
-  background-color: #000000
+  background-color: #000000;
+  color: white;
 }
 
 .game_area-gameview-screen #battle_screen{
@@ -147,45 +148,40 @@ body
 }
 
 
-.control
+.controller
 {
+  color: white;
+}
+
+.controller #btn_power
+{
+  left: 17%;
+  top: 2%;
+  position: absolute;
+}
+
+.controller #btn_up{
+  color: white;
+
+}
+.controller #btn_down{
+
+}
+.controller #btn_right{
 
 }
 
-.control a {
-  color: transparent;
-}
-.control #btn_up{
-  left: 60px;
-  bottom: 63px;
-}
-.control #btn_down{
-  left: 59px;
-  bottom: 21px;
-}
-.control #btn_right{
-  left: 79px;
-  bottom: 42px;
-}
+.controller #btn_left{
 
-.control #btn_left{
-  left: 37px;
-  bottom: 42px;
 }
 
 
-.control #btn_a{
-  left: 259px;
-  bottom: 58px;
-  height: 25px;
-  width: 40px;
+.controller #btn_a{
+
 }
 
-.control #btn_b{
-  left: 223px;
-  bottom: 42px;
-  height: 25px;
-  width: 30px;
+.controller #btn_b{
+
 }
 
 .control_area-lower
@@ -288,9 +284,6 @@ p.test{
 }
 
 /*#########################################*/
-
-
-
 
 	.container {
 		padding-top: 20px;
