@@ -15,5 +15,4 @@ Rails.application.routes.draw do
 	get 'editor' => 'cheat#editor'
 	get 'help' => 'cheat#help'
 	get 'quick_search' => 'cheat#quick_search'
-	get 'log_book' => 'cheat#log_book'
 end

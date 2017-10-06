@@ -27,6 +27,4 @@ class CheatController < ApplicationController
   end
   def help
   end
-  def quick_search
-  end
 end
