@@ -93,7 +93,7 @@ class GameController < ApplicationController
 		if @C > 90
 			@C = 90
 		end
-		return 100
+		return @C
 	end
 	def capture(num)
 		if rand(100) < num
