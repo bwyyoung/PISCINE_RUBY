@@ -32,7 +32,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 ## audio player for ruby, requires:
 ## brew install portaudio
 ## brew install mpg123
-gem 'audite'
+## brew install libsndfile
+#gem 'audio-playback'
+
 ###################
 # gem 'open-uri'
 # gem 'json'

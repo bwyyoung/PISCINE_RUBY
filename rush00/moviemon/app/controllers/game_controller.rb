@@ -1,6 +1,7 @@
 require 'active_support/all'
 require_relative '../models/datamanager.rb'
 
+
 class GameController < ApplicationController
 
 	respond_to? :html
@@ -127,7 +128,7 @@ class GameController < ApplicationController
 			Datamanager.instance.reset_default_settings
 		end
 		unless @@server_started
-
+			Soundmanager.instance.play_sound_main
 			@@server_started = true
 		end
 		puts 'calling title screen'
@@ -137,6 +138,7 @@ class GameController < ApplicationController
 				shutdown
 			when @@button_start
 				Datamanager.instance.set_default
+				Soundmanager.instance.play_song_world
 				return redirection @@url_world_map
 			when @@button_select
 				@@save_index = 0
@@ -154,6 +156,7 @@ class GameController < ApplicationController
 		@@movietitle = ''
 		@@battle_commentary = ''
 		Datamanager.instance.set_default
+		Soundmanager.instance.play_sound_main
 		return redirection @@url_title_screen
 	end
 
