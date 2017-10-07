@@ -1,3 +1,8 @@
+brew install portaudio
+brew install mpg123
+
+gem install audite
+
 == README
 
 This README would normally document whatever steps are necessary to get the

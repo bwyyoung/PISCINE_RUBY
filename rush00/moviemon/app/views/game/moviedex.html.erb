@@ -1,8 +1,9 @@
 <div class="game_area-gameview-screen" id="moviedex_detail">
   <center><span class="read_text">MOVIEDEX</span></center>
-  <% dico.items.each{|title,value| %>
-  <div class ="imgmon <% if title == cursor %> tuning <% end %>"
-       style="background-image:url('<%=value.Poster %>');">
+  <% Dictionary_MyMovies().each{|title| %>
+  <div class ="imgmon <% if title == selected_movie %> tuning <% end %>"
+       style="background-image:url('<%=
+       $player[:Moviemons][title][:Poster] %>');">
   </div>
   <% } %>
 </div>

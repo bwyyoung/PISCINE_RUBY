@@ -191,6 +191,6 @@ class Datamanager
 	end
 
 	def get_movie(my_movie)
-		return @@My_Moviemons[my_movie]
+		return @@Moviemons[my_movie]
 	end
 end

@@ -48,10 +48,29 @@ class GameController < ApplicationController
 	@@game_state = ''
 	@@movietitle = ''
     @@battle_captured = false
-	helper_method :game_state, :movietitle, :gs_ball, :gs_battle, :Dictionary_Movie, :Luck, :battle_commentary
+	@@moviedex_index = 0
+
+	helper_method :game_state, :movietitle, :gs_ball, :gs_battle,
+				  :Dictionary_Movie, :Luck, :battle_commentary,
+				  :Dictionary_MyMovies, :selected_movie
 
 	def Dictionary_Movie
 		$player[:Moviemons][@@movietitle]
+	end
+
+	def selected_movie
+		if $player[:My_Moviemons].length > 0
+			return $player[:My_Moviemons][@@moviedex_index]
+		end
+		return ''
+	end
+
+	def Dictionary_MyMovies
+		if $player[:My_Moviemons].length > 0
+			return $player[:My_Moviemons]
+			return $player[:Moviemons][$player[:My_Moviemons][@@moviedex_index]]
+		end
+		return {}
 	end
 
 	def Luck
@@ -63,7 +82,6 @@ class GameController < ApplicationController
 		if @C > 90
 			@C = 90
 		end
-
 		return 100
 	end
 	def capture(num)
@@ -180,11 +198,12 @@ class GameController < ApplicationController
 					moved = true
 				end
 			when @@button_select
-				if @@movietitle.length > 0
+				if @@movietitle.length == 0
 					return redirection @@url_save
 				end
 			when @@button_start
-				if @@movietitle.length > 0
+				if @@movietitle.length == 0
+					@@moviedex_index = 0
 					return redirection @@url_moviedex
 				end
 		end
@@ -236,9 +255,38 @@ class GameController < ApplicationController
 	end
 
 	def moviedex
-		# puts "player moviex" + $player[:moviedex]
-		@film = $player[:moviedex][$player[:index]] unless $player[:index].nil?
-		# puts $player[:moviedex][ $player[:index] ]
+		case params[@@param_control]
+			when @@button_shutdown
+				shutdown
+			when @@button_a
+				if $player[:My_Moviemons].length > 0
+					redirection @@url_moviedex_detail
+				end
+			when @@button_left
+				if @@moviedex_index > 0
+					@@moviedex_index -= 1
+				end
+			when @@button_right
+				if @@moviedex_index < $player[:My_Moviemons].length - 1
+					@@moviedex_index += 1
+				end
+			when @@button_b
+				return redirection @@url_world_map
+			when @@button_select
+				return redirection @@url_world_map
+			when @@button_start
+				return redirection @@url_world_map
+		end
+	end
+
+	def moviedex_detail
+		case params[@@param_control]
+			when @@button_shutdown
+				shutdown
+			when @@button_b
+				redirection @@url_moviedex
+		end
+
 	end
 
 	def victory
