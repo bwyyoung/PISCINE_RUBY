@@ -46,7 +46,7 @@ class Soundmanager
 		if @@initialized == false
 			initialize()
 		end
-		@@sound_2.start
+		##@@sound_2.start
 	end
 	def play_song_battle
 
