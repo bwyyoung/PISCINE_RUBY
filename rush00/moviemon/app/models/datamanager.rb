@@ -2,6 +2,12 @@ require 'uri'
 require 'json'
 require 'net/http'
 
+class Hash
+	def sample(n)
+		Hash[to_a.sample(n)]
+	end
+end
+
 class Datamanager
 	# the class variable @@instance holds
 	# a reference to the singleton object.
@@ -48,6 +54,15 @@ class Datamanager
 		@@slot = 0
 		@@life = 20
 		@@max_slots = 3
+
+		if File.exist?('public/save.json')
+			file = File.read('public/save.json')
+			save_data = JSON.parse(file, :symbolize_names => true)
+			puts 'resetting moviemons'
+			puts save_data[:'0'][:Moviemons]
+			@@Moviemons = save_data[:'0'][:Moviemons]
+		end
+
 		$player = {
 			slot: @@slot,
 			life: @@life,
@@ -115,6 +130,11 @@ class Datamanager
 	
 	def del_moviemons(cls, name)
 		@@Moviemons.delete(name)
+	end
+
+	def get_random_movie()
+
+		return $player[:Moviemons].sample(1).keys[0]
 	end
 
 	def reset_default_settings

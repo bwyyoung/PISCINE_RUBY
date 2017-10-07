@@ -1,4 +1,4 @@
-
+require 'active_support/all'
 require_relative '../models/datamanager.rb'
 
 class GameController < ApplicationController
@@ -19,9 +19,12 @@ class GameController < ApplicationController
 		mapx: 50,
 		mapy: 50
 	}
+
 	@@MAP_MIN= 0
 	@@MAP_MAX = 100
 	@@gs_walking = 'walking'
+	@@gs_ball = 'ball'
+	@@gs_battle = 'battle'
 	@@param_control = 'control'
 	@@button_a = 'buttonA'
 	@@button_b = 'buttonB'
@@ -42,7 +45,54 @@ class GameController < ApplicationController
 	@@url_world_map = 'world_map'
 	@@url_battle = 'battle'
 	@@url_moviedex_detail = 'moviedex_detail'
+	@@game_state = ''
+	@@movietitle = ''
+    @@battle_captured = false
+	helper_method :game_state, :movietitle, :gs_ball, :gs_battle, :Dictionary_Movie, :Luck, :battle_commentary
 
+	def Dictionary_Movie
+		$player[:Moviemons][@@movietitle]
+	end
+
+	def Luck
+		@C = 50 - ($player[:Moviemons][@@movietitle][:imdbRating].to_s.to_f * 10)
+		+ ($player[:strength] * 5)
+		if @C < 1
+			@C = 1
+			end
+		if @C > 90
+			@C = 90
+		end
+
+		return 100
+	end
+	def capture(num)
+		if rand(100) < num
+			return true
+		end
+		return false
+	end
+
+
+	def battle_commentary
+		@@battle_commentary
+	end
+
+	def game_state
+		@@game_state
+	end
+
+	def movietitle
+		@@movietitle
+	end
+
+	def gs_ball
+		@@gs_ball
+	end
+
+	def gs_battle
+		@@gs_battle
+	end
 
 	def title_screen
 		unless @@server_started
@@ -59,9 +109,9 @@ class GameController < ApplicationController
 				shutdown
 			when @@button_start
 				Datamanager.instance.set_default
-				redirection @@url_world_map
+				return redirection @@url_world_map
 			when @@button_select
-				redirection  @@url_load
+				return redirection  @@url_load
 		end
 	end
 
@@ -71,8 +121,11 @@ class GameController < ApplicationController
 	end
 
 	def shutdown
+		@@game_state = @@gs_walking
+		@@movietitle = ''
+		@@battle_commentary = ''
 		Datamanager.instance.set_default
-		redirection @@url_title_screen
+		return redirection @@url_title_screen
 	end
 
 	def loading_game
@@ -84,43 +137,102 @@ class GameController < ApplicationController
 
 	def world_map
 		puts 'calling world map'
-		@game_state = @@gs_walking
-		puts params[@@param_control]
+		if @@game_state != @@gs_battle
+			@@game_state = @@gs_walking
+			@@movietitle = ''
+		end
+		moved = false
 		case params[@@param_control]
 			when @@button_shutdown
 				shutdown
 			when @@button_a
+				if @@game_state == @@gs_battle
+					@@battle_captured = false
+					return redirection @@url_battle
+				end
 			when @@button_b
+				if @@game_state == @@gs_battle
+					@@game_state = @@gs_walking
+					@@movietitle = ''
+				end
 			when @@button_left
-				if $player[:mapx] > @@MAP_MIN
+				if $player[:mapx] > @@MAP_MIN && @@movietitle.length == 0
 					$player[:mapx] -= 1
 					$player[:coord][1] -= 0.0010
+					moved = true
 				end
 			when @@button_right
-				if $player[:mapx] < @@MAP_MAX
+				if $player[:mapx] < @@MAP_MAX && @@movietitle.length == 0
 					$player[:mapx] += 1
 					$player[:coord][1] += 0.0010
+					moved = true
 				end
 			when @@button_down
-				if $player[:mapy] > @@MAP_MIN
+				if $player[:mapy] > @@MAP_MIN && @@movietitle.length == 0
 					$player[:mapy] -= 1
 					$player[:coord][0] -= 0.0010
+					moved = true
 				end
 			when @@button_up
-
-				if $player[:mapy] < @@MAP_MAX
+				if $player[:mapy] < @@MAP_MAX && @@movietitle.length == 0
 					$player[:mapy] += 1
 					$player[:coord][0] += 0.0010
+					moved = true
 				end
 			when @@button_select
-				redirection @@url_save
+				if @@movietitle.length > 0
+					return redirection @@url_save
+				end
 			when @@button_start
-				redirection @@url_moviedex
+				if @@movietitle.length > 0
+					return redirection @@url_moviedex
+				end
+		end
+		if moved && @@movietitle.length == 0
+			random_num = rand(100)
+			if random_num > 60
+				@@movietitle = Datamanager.instance.get_random_movie
+				@@game_state = @@gs_battle
+				puts 'BATTLE MODE'
+			elsif random_num > 40
+				@@game_state = @@gs_ball
+				puts 'BALL MODE'
+				$player[:movieballs] += 1
+			end
 		end
 	end
 
 	def battle
+		puts 'BATTLE ROUND !!!!  '  +  rand(100).to_s
+		@@battle_commentary = ''
+		case params[@@param_control]
+			when @@button_shutdown
+				shutdown
+			when @@button_a
+				if @@battle_captured
+					@@game_state = @@gs_walking
+					@@movietitle = ''
+					@@battle_commentary = ''
+					return redirection @@url_world_map
+				end
+				if $player[:movieballs] > 0
+					$player[:movieballs] -= 1
+					if capture(Luck())
+						@@battle_commentary = @@movietitle.to_s + ' Captured !'
+						@@battle_captured = true
+						$player[:My_Moviemons].push(@@movietitle)
+						$player[:strength] += 1
+					end
+				else
+					@@battle_commentary = 'You ran out of Balls! Press B to quit battle...'
+				end
 
+			when @@button_b
+				@@game_state = @@gs_walking
+				@@movietitle = ''
+				@@battle_commentary = ''
+				return redirection @@url_world_map
+		end
 	end
 
 	def moviedex
