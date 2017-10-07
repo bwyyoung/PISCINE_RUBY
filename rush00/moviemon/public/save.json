@@ -12,9 +12,9 @@
     "Pride_and_Prejudice_and_Zombies"
   ],
   "0": {
-    "slot": 2,
+    "slot": 0,
     "life": 20,
-    "strength": 0,
+    "strength": 1,
     "index": 0,
     "movieballs": 100,
     "Moviemons": {
@@ -392,22 +392,22 @@
       }
     },
     "My_Moviemons": [
-
+      "The_Rocky_Horror_Picture_Show"
     ],
     "MoviemonBattle": "",
     "coord": [
-      1.352083,
+      1.3500830000000001,
       103.819836
     ],
     "mapx": 50,
-    "mapy": 50
+    "mapy": 48
   },
   "1": {
-    "slot": 2,
+    "slot": 1,
     "life": 20,
-    "strength": 0,
+    "strength": 2,
     "index": 0,
-    "movieballs": 100,
+    "movieballs": 101,
     "Moviemons": {
       "Aliens": {
         "Title": "Aliens",
@@ -783,15 +783,16 @@
       }
     },
     "My_Moviemons": [
-
+      "The_Rocky_Horror_Picture_Show",
+      "Manos-_The_Hands_of_Fate"
     ],
     "MoviemonBattle": "",
     "coord": [
-      1.352083,
-      103.819836
+      1.3440830000000008,
+      103.820836
     ],
-    "mapx": 50,
-    "mapy": 50
+    "mapx": 51,
+    "mapy": 42
   },
   "2": {
     "slot": 2,

@@ -2,15 +2,10 @@
   <center><span class="read_text">SAVE GAME</span>
     <br /><br />
     <span class="read_text">Select SAVE SLOT to SAVE</span><br />
-    <% data_player.each{|key, value| %>
-        <p class= "<% if name == key %>save_selected<% end %>">
+    <% max_slots.times{|x| %>
+        <p class= "<% if x == save_index %>save_selected<% end %>">
           <span class="read_text">
-         <%= key %> |<%=value%> /
-            <% data_monster.each{|key2, value2| %>
-							<% if key == key2 %>
-                    <%= value2 %>
-                <% end %>
-						<% } %>
+            SAVE SLOT <%=x %>
 					</span>
         </p>
     <% } %>

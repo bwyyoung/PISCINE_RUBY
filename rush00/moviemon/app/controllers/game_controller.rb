@@ -49,10 +49,20 @@ class GameController < ApplicationController
 	@@movietitle = ''
     @@battle_captured = false
 	@@moviedex_index = 0
+	@@save_index = 0
 
 	helper_method :game_state, :movietitle, :gs_ball, :gs_battle,
 				  :Dictionary_Movie, :Luck, :battle_commentary,
-				  :Dictionary_MyMovies, :selected_movie
+				  :Dictionary_MyMovies, :selected_movie, :max_slots,
+				  :save_index
+
+	def max_slots
+		return Datamanager.instance.get_max_slots
+	end
+
+	def save_index
+		@@save_index
+	end
 
 	def Dictionary_Movie
 		$player[:Moviemons][@@movietitle]
@@ -113,22 +123,23 @@ class GameController < ApplicationController
 	end
 
 	def title_screen
+		unless File.exist?('public/save.json')
+			Datamanager.instance.reset_default_settings
+		end
 		unless @@server_started
-			unless File.exist?('public/save.json')
-				Datamanager.instance.reset_default_settings
-			end
+
 			@@server_started = true
 		end
 		puts 'calling title screen'
 		puts params[@@param_control]
 		case params[@@param_control]
 			when @@button_shutdown
-				puts 'calling shutdown from title screen'
 				shutdown
 			when @@button_start
 				Datamanager.instance.set_default
 				return redirection @@url_world_map
 			when @@button_select
+				@@save_index = 0
 				return redirection  @@url_load
 		end
 	end
@@ -146,12 +157,6 @@ class GameController < ApplicationController
 		return redirection @@url_title_screen
 	end
 
-	def loading_game
-	end
-
-	def saving_game
-
-	end
 
 	def world_map
 		puts 'calling world map'
@@ -199,6 +204,7 @@ class GameController < ApplicationController
 				end
 			when @@button_select
 				if @@movietitle.length == 0
+					@@save_index = 0
 					return redirection @@url_save
 				end
 			when @@button_start
@@ -288,6 +294,53 @@ class GameController < ApplicationController
 		end
 
 	end
+
+	def loading_game
+		case params[@@param_control]
+			when @@button_shutdown
+				shutdown
+			when @@button_down
+				if @@save_index < max_slots - 1
+					@@save_index += 1
+				end
+			when @@button_up
+				if @@save_index > 0
+					@@save_index -= 1
+				end
+			when @@button_a
+				$player[:slot] = @@save_index
+				Datamanager.instance.load
+				@@save_index = 0
+				return redirection @@url_world_map
+			when @@button_select
+				@@save_index = 0
+				return redirection  @@url_title_screen
+		end
+	end
+
+	def saving_game
+		case params[@@param_control]
+			when @@button_shutdown
+				shutdown
+			when @@button_down
+				if @@save_index < max_slots - 1
+					@@save_index += 1
+				end
+			when @@button_up
+				if @@save_index > 0
+					@@save_index -= 1
+				end
+			when @@button_a
+				$player[:slot] = @@save_index
+				Datamanager.instance.save
+				@@save_index = 0
+				return redirection @@url_world_map
+			when @@button_select
+				@@save_index = 0
+				return redirection  @@url_title_screen
+		end
+	end
+
 
 	def victory
 	end

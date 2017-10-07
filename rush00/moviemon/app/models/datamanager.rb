@@ -40,7 +40,9 @@ class Datamanager
 		'Saw',
 		'Pride_and_Prejudice_and_Zombies'
 	]
-
+	@@slot = 0
+	@@life = 20
+	@@max_slots = 3
 	def set_default
 		@@mapx = 50
 		@@mapy = 50
@@ -112,6 +114,11 @@ class Datamanager
 		}
 	end
 
+	def get_max_slots()
+		return @@max_slots
+	end
+
+
 	def move_coord(cls, x, y)
 		@coord[0] = x
 		@coord[1] = y
@@ -163,20 +170,23 @@ class Datamanager
 		json_data['movie_list'] = @@movie_list
 		File.open('public/save.json', 'w+') do |f|
 			@@max_slots.times{|x|
-				$player[:slot] = x
-				json_data[x] = $player
+				puts 'creating slots ' + x.to_s
+				json_data[x] = $player.clone
+				json_data[x][:slot] = x
 			}
 			f.write(JSON.pretty_generate(json_data))
 		end
 	end
 
 	def load
+		puts 'loading load  11111111'
 		unless File.exist?('public/save.json')
 			reset_default_settings
 		end
-		file = File.read('public/save.json')
-		save_data = JSON.parse(file, :symbolize_names => true)
-		$player = save_data[$player[:slot]]
+		save_data = JSON.parse(File.read('public/save.json'), :symbolize_names => true)
+		$player = save_data[$player[:slot].to_s.parameterize.underscore.to_sym]
+		puts 'loading load ' + $player.to_s
+
 	end
 
 	def save
@@ -185,7 +195,7 @@ class Datamanager
 		end
 		array_data = JSON.parse(File.read('public/save.json'))
 		File.open('public/save.json', 'w+') do |f|
-			array_data[$player[:slot]] = $player
+			array_data[$player[:slot].to_s] = $player.clone
 			f.write(JSON.pretty_generate(array_data))
 		end
 	end
