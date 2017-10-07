@@ -1,6 +1,6 @@
 require 'active_support/all'
 require_relative '../models/datamanager.rb'
-
+require_relative '../models/soundmanager.rb'
 
 class GameController < ApplicationController
 
