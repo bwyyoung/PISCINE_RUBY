@@ -19,6 +19,8 @@ class Soundmanager
 
 	@@initialized = false
 	def initialize
+		## this currently isnt working. Please try to find a way to play sounds in ruby.
+		## i could do it in python, but not Ruby.
 	##	@@output = AudioPlayback::Device::Output.gets
 		#@@output = AudioPlayback::Device::Output.gets
 		#	puts @@output.to_s
