@@ -14,7 +14,7 @@
   "0": {
     "slot": 0,
     "life": 20,
-    "strength": 1,
+    "strength": 0,
     "index": 0,
     "movieballs": 100,
     "Moviemons": {
@@ -392,22 +392,22 @@
       }
     },
     "My_Moviemons": [
-      "The_Rocky_Horror_Picture_Show"
+
     ],
     "MoviemonBattle": "",
     "coord": [
-      1.3500830000000001,
+      1.352083,
       103.819836
     ],
     "mapx": 50,
-    "mapy": 48
+    "mapy": 50
   },
   "1": {
     "slot": 1,
     "life": 20,
-    "strength": 2,
+    "strength": 0,
     "index": 0,
-    "movieballs": 101,
+    "movieballs": 100,
     "Moviemons": {
       "Aliens": {
         "Title": "Aliens",
@@ -783,16 +783,15 @@
       }
     },
     "My_Moviemons": [
-      "The_Rocky_Horror_Picture_Show",
-      "Manos-_The_Hands_of_Fate"
+
     ],
     "MoviemonBattle": "",
     "coord": [
-      1.3440830000000008,
-      103.820836
+      1.352083,
+      103.819836
     ],
-    "mapx": 51,
-    "mapy": 42
+    "mapx": 50,
+    "mapy": 50
   },
   "2": {
     "slot": 2,

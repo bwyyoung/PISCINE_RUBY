@@ -147,7 +147,6 @@ class Datamanager
 	end
 
 	def load
-		puts 'loading load  11111111'
 		unless File.exist?('public/save.json')
 			reset_default_settings
 		end
