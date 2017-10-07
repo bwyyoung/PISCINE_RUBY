@@ -130,39 +130,6 @@ class Datamanager
 		}
 	end
 
-	def set_value(new_coordinates,
-				  new_movieballs,
-				  new_Moviemons,
-				  new_My_Moviemons,
-				  new_MoviemonBattle,
-				  new_strength = 0,
-				  new_mapx = 50,
-				  new_mapy = 50,
-				  new_index = 0)
-		@@coord           = new_coordinates
-		@@movieballs      = new_movieballs
-		@@Moviemons       = new_Moviemons
-		@@My_Moviemons    = new_My_Moviemons
-		@@MoviemonBattle  = new_MoviemonBattle
-		@@strength        = new_strength
-		@@mapx			= new_mapx
-		@@mapy            = new_mapy
-		@@index			= new_index
-		$player =
-		{
-			slot: @@slot,
-			life: @@life,
-			strength: @@strength,
-			index: @@index,
-			movieballs: @@movieballs,
-			Moviemons: @@Moviemons,
-			My_Moviemons: @@My_Moviemons,
-			MoviemonBattle: '',
-			coord: @@coord,
-			mapx: @@mapy,
-			mapy: @@mapx
-		}
-	end
 
 	def get_max_slots()
 		return @@max_slots
@@ -190,7 +157,6 @@ class Datamanager
 	end
 
 	def get_random_movie()
-
 		return $player[:Moviemons].sample(1).keys[0]
 	end
 
