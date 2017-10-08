@@ -35,7 +35,6 @@ class Datamanager
 		'The_Rocky_Horror_Picture_Show',
 		'Hellboy',
 		'Manos-_The_Hands_of_Fate',
-		'Freddy',
 		'Avatar',
 		'Horror',
 		'Terror',
@@ -61,24 +60,24 @@ class Datamanager
 
 		if File.exist?('public/save.json')
 			file = File.read('public/save.json')
-			save_data = JSON.parse(file, :symbolize_names => true)
+			save_data = JSON.parse(file)
 			puts 'resetting moviemons'
-			puts save_data[:'0'][:Moviemons]
-			@@Moviemons = save_data[:'0'][:Moviemons]
+			puts save_data['0']['Moviemons']
+			@@Moviemons = save_data['0']['Moviemons']
 		end
 
 		$player = {
-			slot: @@slot,
-			life: @@life,
-			strength: @@strength,
-			index: @@index,
-			movieballs: @@movieballs,
-			Moviemons: @@Moviemons,
-			My_Moviemons: @@My_Moviemons,
-			MoviemonBattle: '',
-			coord: @@coord,
-			mapx: @@mapy,
-			mapy: @@mapx
+			'slot' => @@slot,
+			'life' => @@life,
+			'strength' => @@strength,
+			'index' => @@index,
+			'movieballs' => @@movieballs,
+			'Moviemons' => @@Moviemons,
+			'My_Moviemons' => @@My_Moviemons,
+			'MoviemonBattle' => '',
+			'coord' => @@coord,
+			'mapx' => @@mapy,
+			'mapy' => @@mapx
 		}
 	end
 
@@ -109,7 +108,7 @@ class Datamanager
 	end
 
 	def get_random_movie()
-		return $player[:Moviemons].sample(1).keys[0]
+		return $player['Moviemons'].sample(1).keys[0]
 	end
 
 	def reset_default_settings
@@ -122,17 +121,17 @@ class Datamanager
 		}
 		$player =
 			{
-				slot: @@slot,
-				life: @@life,
-				strength: @@strength,
-				index: @@index,
-				movieballs: @@movieballs,
-				Moviemons: @@Moviemons,
-				My_Moviemons: @@My_Moviemons,
-				MoviemonBattle: '',
-				coord: @@coord,
-				mapx: @@mapy,
-				mapy: @@mapx
+				'slot' => @@slot,
+				'life' => @@life,
+				'strength' => @@strength,
+				'index' => @@index,
+				'movieballs' => @@movieballs,
+				'Moviemons' => @@Moviemons,
+				'My_Moviemons' => @@My_Moviemons,
+				'MoviemonBattle' => '',
+				'coord' => @@coord,
+				'mapx' => @@mapy,
+				'mapy' => @@mapx
 			}
 		json_data = {}
 		json_data['movie_list'] = @@movie_list
@@ -140,7 +139,7 @@ class Datamanager
 			@@max_slots.times{|x|
 				puts 'creating slots ' + x.to_s
 				json_data[x] = $player.clone
-				json_data[x][:slot] = x
+				json_data[x]['slot'] = x
 			}
 			f.write(JSON.pretty_generate(json_data))
 		end
@@ -150,9 +149,10 @@ class Datamanager
 		unless File.exist?('public/save.json')
 			reset_default_settings
 		end
-		save_data = JSON.parse(File.read('public/save.json'), :symbolize_names => true)
-		$player = save_data[$player[:slot].to_s.parameterize.underscore.to_sym]
-		puts 'loading load ' + $player.to_s
+		save_data = JSON.parse(File.read('public/save.json'))
+
+		$player = save_data[$player['slot'].to_s]
+
 
 	end
 
@@ -162,7 +162,7 @@ class Datamanager
 		end
 		array_data = JSON.parse(File.read('public/save.json'))
 		File.open('public/save.json', 'w+') do |f|
-			array_data[$player[:slot].to_s] = $player.clone
+			array_data[$player['slot'].to_s] = $player.clone
 			f.write(JSON.pretty_generate(array_data))
 		end
 	end

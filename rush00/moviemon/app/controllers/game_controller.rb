@@ -8,19 +8,25 @@ class GameController < ApplicationController
 	$view ||= 'title_screen'
 
 	$player ||= {
-		slot: 1,
-		life: 20,
-		strength: 5,
-		index: 0,
-		movieballs: 100,
-		Moviemons: {},
-		My_Moviemons: [],
-		MoviemonBattle: '',
-		coord: [1.352083, 103.819836],
-		mapx: 50,
-		mapy: 50
+		'slot' => 1,
+		'life' => 50,
+		'strength' => 5,
+		'index' => 0,
+		'movieballs' => 100,
+		'Moviemons' => {},
+		'My_Moviemons' => [],
+		'MoviemonBattle' => '',
+		'coord' => [1.352083, 103.819836],
+		'mapx' => 50,
+		'mapy' => 50
 	}
 
+	@@MonsterHP = 0
+	@@MonsterSTR = 0
+	@@PlayerHP= 50
+	@@Player_full_HP = 50
+	@@Player_default_HP = 50
+	@@PlayerSTR = 5
 	@@MAP_MIN= 0
 	@@MAP_MAX = 100
 	@@gs_walking = 'walking'
@@ -55,7 +61,27 @@ class GameController < ApplicationController
 	helper_method :game_state, :movietitle, :gs_ball, :gs_battle,
 				  :Dictionary_Movie, :Luck, :battle_commentary,
 				  :Dictionary_MyMovies, :selected_movie, :max_slots,
-				  :save_index
+				  :save_index, :HP_Monster, :HP_Player
+
+	def HP_Monster
+		@@MonsterHP
+	end
+	def HP_Player
+		@@PlayerHP
+	end
+
+	def HP_Player_FULL
+		@@Player_full_HP
+	end
+
+	def STR_Player
+		@@PlayerSTR
+	end
+
+	def STR_Monster
+		@@MonsterSTR = ($player['Moviemons'][@@movietitle]['imdbRating'].to_i)
+		return @@MonsterSTR
+	end
 
 	def max_slots
 		return Datamanager.instance.get_max_slots
@@ -66,36 +92,34 @@ class GameController < ApplicationController
 	end
 
 	def Dictionary_Movie
-		$player[:Moviemons][@@movietitle]
+		$player['Moviemons'][@@movietitle]
 	end
 
 	def selected_movie
-		if $player[:My_Moviemons].length > 0
-			return $player[:My_Moviemons][@@moviedex_index]
+		if $player['My_Moviemons'].length > 0
+			return $player['My_Moviemons'][@@moviedex_index]
 		end
 		return ''
 	end
 
 	def Dictionary_MyMovies
-		if $player[:My_Moviemons].length > 0
-			return $player[:My_Moviemons]
-			return $player[:Moviemons][$player[:My_Moviemons][@@moviedex_index]]
+		if $player['My_Moviemons'].length > 0
+			return $player['My_Moviemons']
+			#return $player[:Moviemons][$player[:My_Moviemons][@@moviedex_index]]
 		end
 		return {}
 	end
 
 	def Luck
-		@C = 50 - ($player[:Moviemons][@@movietitle][:imdbRating].to_s.to_f * 10)
-		+ ($player[:strength] * 5)
-		if @C < 1
-			@C = 1
-			end
-		if @C > 90
-			@C = 90
-		end
-		return 100
+		@C = ($player['Moviemons'][@@movietitle]['imdbRating'].to_i * 10)
+
+		#puts "Monster HP = " + @C.to_s
+
+		#return 100
 		return @C
 	end
+
+
 	def capture(num)
 		if rand(100) < num
 			return true
@@ -136,7 +160,7 @@ class GameController < ApplicationController
 		puts params[@@param_control]
 		case params[@@param_control]
 			when @@button_shutdown
-				shutdown
+				return shutdown
 			when @@button_start
 				Datamanager.instance.set_default
 				Soundmanager.instance.play_song_world
@@ -171,10 +195,14 @@ class GameController < ApplicationController
 		moved = false
 		case params[@@param_control]
 			when @@button_shutdown
-				shutdown
+				return shutdown
 			when @@button_a
 				if @@game_state == @@gs_battle
 					@@battle_captured = false
+					@@MonsterHP = Luck()
+					@@MonsterSTR = STR_Monster()
+					@@battle_lost = false
+					@@PlayerHP = @@Player_full_HP
 					return redirection @@url_battle
 				end
 			when @@button_b
@@ -183,27 +211,27 @@ class GameController < ApplicationController
 					@@movietitle = ''
 				end
 			when @@button_left
-				if $player[:mapx] > @@MAP_MIN && @@movietitle.length == 0
-					$player[:mapx] -= 1
-					$player[:coord][1] -= 0.0010
+				if $player['mapx'] > @@MAP_MIN && @@movietitle.length == 0
+					$player['mapx'] -= 1
+					$player['coord'][1] -= 0.0010
 					moved = true
 				end
 			when @@button_right
-				if $player[:mapx] < @@MAP_MAX && @@movietitle.length == 0
-					$player[:mapx] += 1
-					$player[:coord][1] += 0.0010
+				if $player['mapx'] < @@MAP_MAX && @@movietitle.length == 0
+					$player['mapx'] += 1
+					$player['coord'][1] += 0.0010
 					moved = true
 				end
 			when @@button_down
-				if $player[:mapy] > @@MAP_MIN && @@movietitle.length == 0
-					$player[:mapy] -= 1
-					$player[:coord][0] -= 0.0010
+				if $player['mapy'] > @@MAP_MIN && @@movietitle.length == 0
+					$player['mapy'] -= 1
+					$player['coord'][0] -= 0.0010
 					moved = true
 				end
 			when @@button_up
-				if $player[:mapy] < @@MAP_MAX && @@movietitle.length == 0
-					$player[:mapy] += 1
-					$player[:coord][0] += 0.0010
+				if $player['mapy'] < @@MAP_MAX && @@movietitle.length == 0
+					$player['mapy'] += 1
+					$player['coord'][0] += 0.0010
 					moved = true
 				end
 			when @@button_select
@@ -226,40 +254,56 @@ class GameController < ApplicationController
 			elsif random_num > 40
 				@@game_state = @@gs_ball
 				puts 'BALL MODE'
-				$player[:movieballs] += 1
+				$player['movieballs'] += 1
 			end
 		end
 	end
+
+	@@battle_lost = false
 
 	def battle
 		puts 'BATTLE ROUND !!!!  '  +  rand(100).to_s
 		@@battle_commentary = ''
 		case params[@@param_control]
 			when @@button_shutdown
-				shutdown
+				 return shutdown
 			when @@button_a
-				if @@battle_captured
+				if @@battle_captured && !@@battle_lost
 					@@game_state = @@gs_walking
 					@@movietitle = ''
 					@@battle_commentary = ''
 					return redirection @@url_world_map
 				end
-				if $player[:movieballs] > 0
-					$player[:movieballs] -= 1
-					if capture(Luck())
-						@@battle_commentary = @@movietitle.to_s + ' Captured !'
+				if 	@@battle_lost == false
+					@@MonsterHP -= @@PlayerSTR
+					@@PlayerHP = @@PlayerHP - @@MonsterSTR
+				end
+				if @@PlayerHP >= 0 && !@@battle_lost
+					$player['movieballs'] -= 1
+					if @@MonsterHP <= 0
+						@@Player_full_HP = @@Player_full_HP + 10
+						@@PlayerHP = @@Player_full_HP
+						@@PlayerSTR = @@PlayerSTR + 1
+						@@game_state = @@gs_walking
 						@@battle_captured = true
-						$player[:My_Moviemons].push(@@movietitle)
-						$player[:strength] += 1
+						$player['My_Moviemons'].push(@@movietitle)
+						@@battle_commentary = @@movietitle.to_s + ' Captured !'
+						#return redirection @@url_world_map
 					end
 				else
-					@@battle_commentary = 'You ran out of Balls! Press B to quit battle...'
+					@@game_state = @@gs_walking
+					@@PlayerHP = @@Player_full_HP
+					@@battle_commentary = 'You failed ! Press B to quit battle...'
+					@@battle_lost = true
+				#	return redirection @@url_world_map
 				end
 
 			when @@button_b
+				@@PlayerHP = @@Player_full_HP
 				@@game_state = @@gs_walking
 				@@movietitle = ''
 				@@battle_commentary = ''
+				@@battle_lost = false
 				return redirection @@url_world_map
 		end
 	end
@@ -267,9 +311,9 @@ class GameController < ApplicationController
 	def moviedex
 		case params[@@param_control]
 			when @@button_shutdown
-				shutdown
+				return shutdown
 			when @@button_a
-				if $player[:My_Moviemons].length > 0
+				if $player['My_Moviemons'].length > 0
 					redirection @@url_moviedex_detail
 				end
 			when @@button_left
@@ -277,7 +321,7 @@ class GameController < ApplicationController
 					@@moviedex_index -= 1
 				end
 			when @@button_right
-				if @@moviedex_index < $player[:My_Moviemons].length - 1
+				if @@moviedex_index < $player['My_Moviemons'].length - 1
 					@@moviedex_index += 1
 				end
 			when @@button_b
@@ -292,7 +336,7 @@ class GameController < ApplicationController
 	def moviedex_detail
 		case params[@@param_control]
 			when @@button_shutdown
-				shutdown
+				return shutdown
 			when @@button_b
 				redirection @@url_moviedex
 		end
@@ -302,7 +346,7 @@ class GameController < ApplicationController
 	def loading_game
 		case params[@@param_control]
 			when @@button_shutdown
-				shutdown
+				return shutdown
 			when @@button_down
 				if @@save_index < max_slots - 1
 					@@save_index += 1
@@ -312,9 +356,17 @@ class GameController < ApplicationController
 					@@save_index -= 1
 				end
 			when @@button_a
-				$player[:slot] = @@save_index
+				$player['slot'] = @@save_index
 				Datamanager.instance.load
 				@@save_index = 0
+				puts 'LOAD DATA '  +  $player.to_s
+				@@PlayerHP = @@Player_default_HP
+				@@Player_full_HP = @@Player_default_HP
+				$player['My_Moviemons'].each{|mon|
+					@@PlayerHP += 10
+					@@Player_full_HP += 10
+				}
+
 				return redirection @@url_world_map
 			when @@button_select
 				@@save_index = 0
@@ -325,7 +377,7 @@ class GameController < ApplicationController
 	def saving_game
 		case params[@@param_control]
 			when @@button_shutdown
-				shutdown
+				return shutdown
 			when @@button_down
 				if @@save_index < max_slots - 1
 					@@save_index += 1
@@ -335,13 +387,13 @@ class GameController < ApplicationController
 					@@save_index -= 1
 				end
 			when @@button_a
-				$player[:slot] = @@save_index
+				$player['slot'] = @@save_index
 				Datamanager.instance.save
 				@@save_index = 0
 				return redirection @@url_world_map
 			when @@button_select
 				@@save_index = 0
-				return redirection  @@url_title_screen
+				return redirection  @@url_world_map
 		end
 	end
 

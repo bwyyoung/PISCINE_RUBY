@@ -1,14 +1,11 @@
 <img src="
-	https://maps.googleapis.com/maps/api/staticmap?center=<%=$player[:coord][0]%>,<%=$player[:coord][1]%>&zoom=15&tile=0&size=300x300&maptype=roadmap&key=AIzaSyAaI6GsGp-nmqzU67hLXNlqpqE94i7UvTQ
+	https://maps.googleapis.com/maps/api/staticmap?center=<%=$player['coord'][0]%>,<%=$player['coord'][1]%>&zoom=15&tile=0&size=300x300&maptype=roadmap&key=AIzaSyAaI6GsGp-nmqzU67hLXNlqpqE94i7UvTQ
 	" class="vuemap noisy ">
 <div class="player"></div>
 <% if game_state == gs_battle %>
     <div class="message">
       <%=movietitle%> has AMBUSHED YOU!</div>
     <% end %>
-<div class="moviballs"> MovieBalls: <%=$player[:movieballs]%>
-  <% if game_state == gs_ball %>
-      -> +1 MovieBall
-  <% end %>
-  <div class="coord">[<%=$player[:mapx]%> : <%=$player[:mapy]%>]</div>
+<div class="moviballs"> HP: <%= HP_Player() %>
+    <div class="coord">[<%=$player['mapx']%> : <%=$player['mapy']%>]</div>
 </div>

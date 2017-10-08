@@ -4,7 +4,6 @@
     "The_Rocky_Horror_Picture_Show",
     "Hellboy",
     "Manos-_The_Hands_of_Fate",
-    "Freddy",
     "Avatar",
     "Horror",
     "Terror",
@@ -171,38 +170,6 @@
         "DVD": "07 Oct 2003",
         "BoxOffice": "N/A",
         "Production": "Sinister Cinema",
-        "Website": "N/A",
-        "Response": "True"
-      },
-      "Freddy": {
-        "Title": "Freddy",
-        "Year": "1978",
-        "Rated": "N/A",
-        "Released": "12 Apr 1978",
-        "Runtime": "90 min",
-        "Genre": "Comedy",
-        "Director": "Robert Thomas",
-        "Writer": "Robert Thomas (dialogue), Robert Thomas (play), Robert Thomas (screenplay)",
-        "Actors": "Jean Lefebvre, Pierre Doris, Marie-Christine Adam, Sophie Daumier",
-        "Plot": "N/A",
-        "Language": "French",
-        "Country": "France",
-        "Awards": "N/A",
-        "Poster": "N/A",
-        "Ratings": [
-          {
-            "Source": "Internet Movie Database",
-            "Value": "6.1/10"
-          }
-        ],
-        "Metascore": "N/A",
-        "imdbRating": "6.1",
-        "imdbVotes": "12",
-        "imdbID": "tt0233752",
-        "Type": "movie",
-        "DVD": "N/A",
-        "BoxOffice": "N/A",
-        "Production": "N/A",
         "Website": "N/A",
         "Response": "True"
       },
@@ -565,38 +532,6 @@
         "Website": "N/A",
         "Response": "True"
       },
-      "Freddy": {
-        "Title": "Freddy",
-        "Year": "1978",
-        "Rated": "N/A",
-        "Released": "12 Apr 1978",
-        "Runtime": "90 min",
-        "Genre": "Comedy",
-        "Director": "Robert Thomas",
-        "Writer": "Robert Thomas (dialogue), Robert Thomas (play), Robert Thomas (screenplay)",
-        "Actors": "Jean Lefebvre, Pierre Doris, Marie-Christine Adam, Sophie Daumier",
-        "Plot": "N/A",
-        "Language": "French",
-        "Country": "France",
-        "Awards": "N/A",
-        "Poster": "N/A",
-        "Ratings": [
-          {
-            "Source": "Internet Movie Database",
-            "Value": "6.1/10"
-          }
-        ],
-        "Metascore": "N/A",
-        "imdbRating": "6.1",
-        "imdbVotes": "12",
-        "imdbID": "tt0233752",
-        "Type": "movie",
-        "DVD": "N/A",
-        "BoxOffice": "N/A",
-        "Production": "N/A",
-        "Website": "N/A",
-        "Response": "True"
-      },
       "Avatar": {
         "Title": "Avatar",
         "Year": "2009",
@@ -953,38 +888,6 @@
         "DVD": "07 Oct 2003",
         "BoxOffice": "N/A",
         "Production": "Sinister Cinema",
-        "Website": "N/A",
-        "Response": "True"
-      },
-      "Freddy": {
-        "Title": "Freddy",
-        "Year": "1978",
-        "Rated": "N/A",
-        "Released": "12 Apr 1978",
-        "Runtime": "90 min",
-        "Genre": "Comedy",
-        "Director": "Robert Thomas",
-        "Writer": "Robert Thomas (dialogue), Robert Thomas (play), Robert Thomas (screenplay)",
-        "Actors": "Jean Lefebvre, Pierre Doris, Marie-Christine Adam, Sophie Daumier",
-        "Plot": "N/A",
-        "Language": "French",
-        "Country": "France",
-        "Awards": "N/A",
-        "Poster": "N/A",
-        "Ratings": [
-          {
-            "Source": "Internet Movie Database",
-            "Value": "6.1/10"
-          }
-        ],
-        "Metascore": "N/A",
-        "imdbRating": "6.1",
-        "imdbVotes": "12",
-        "imdbID": "tt0233752",
-        "Type": "movie",
-        "DVD": "N/A",
-        "BoxOffice": "N/A",
-        "Production": "N/A",
         "Website": "N/A",
         "Response": "True"
       },

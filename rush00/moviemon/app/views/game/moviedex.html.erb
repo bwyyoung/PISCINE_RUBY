@@ -2,8 +2,8 @@
   <center><span class="read_text">MOVIEDEX</span></center>
   <% Dictionary_MyMovies().each{|title| %>
   <div class ="imgmon <% if title == selected_movie %> tuning <% end %>"
-       style="background-image:url('<%=
-       $player[:Moviemons][title][:Poster] %>');">
+      style="background-image:url('<%=
+      $player['Moviemons'][title]['Poster'] %>');">
   </div>
   <% } %>
 </div>

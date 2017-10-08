@@ -27,39 +27,82 @@
       </div>
       <div class="controller"></div>
       <div class="control_area">
-        <div class="d_pad">
+        <div class="d_pad" style="padding-top: 21%;padding-left: 9%">
           <div class="controller">
+          <table>
+            <tr>
+              <td></td>
+              <td style="text-align: center;padding-bottom: 10%;">
+                <a href="?control=up" accesskey="w"> <div class="controller" id="btn_up" >
+                  <span class="read_text">UP</span></div></a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;padding-bottom: 10%;">
+                <a href="?control=left" accesskey="a"> <div class="controller" id="btn_left" >
+                <span class="read_text">LEFT</span></div></a></td>
+              <td></td>
+              <td style="text-align: center;padding-bottom: 10%;">
+                <a href="?control=right" accesskey="d"> <div class="controller" id="btn_right" >
+                  <span class="read_text">RIGHT</span></div></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="text-align: center;padding-bottom: 10%;">
+                <a href="?control=down" accesskey="s"> <div class="controller" id="btn_down" >
+                  <span class="read_text">DOWN</span></div></a>
+              </td>
+              <td></td>
+            </tr>
+          </table>
+          <!--<div class="controller">
             <a href="?control=up"> <div class="controller" id="btn_up" >
               <span class="read_text">UP</span></div></a>
             <a href="?control=down"> <div class="controller" id="btn_down" >
               <span class="read_text">DOWN</span></div></a>
-            <div class="controller" id="btn_right" >
-              <a href="?control=right">
-                <span class="read_text">RIGHT</span>
-              </a>
-            </div>
+            <a href="?control=right"> <div class="controller" id="btn_right" >
+              <span class="read_text">RIGHT</span></div></a>
             <a href="?control=left"> <div class="controller" id="btn_left" >
-              <span class="read_text">LEFT</span></div></a>
+              <span class="read_text">LEFT</span></div></a>-->
           </div>
         </div>
-        <div class="buttons_a_b">
+        <div class="buttons_a_b" style="padding-right: 10%">
           <div class="controller">
-            <a href="?control=buttonA"> <div class="controller" id="btn_a">
+            <table>
+              <tr>
+                <td></td>
+                <td style="padding-bottom: 25%;padding-top: 10%;">
+                  <a href="?control=buttonA" accesskey="o"> <div class="controller"  id="btn_a">
+                    <span class="read_text">BTN_A</span></div></a>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-right: 26%">
+                  <a href="?control=buttonB" accesskey="k"> <div class="controller"  id="btn_b">
+							    <span class="read_text">BTN_B
+                </td>
+                <td>
+                </td>
+              </tr>
+            </table>
+            <!--<a href="?control=buttonA"> <div class="controller" id="btn_a">
               <span class="read_text">BTN_A</span></div></a>
             <a href="?control=buttonB"> <div class="controller"  id="btn_b">
 							<span class="read_text">BTN_B
-							</span></div></a>
+							</span></div></a>-->
           </div>
         </div>
       </div>
       <div class="control_area-lower">
         <div class="control_btn_select">
-          <a href="?control=select">
+          <a href="?control=select" accesskey="c">
 							<span class="read_text">SELECT
 							</span></a>
         </div>
         <div class="control_btn_start">
-          <a href="?control=start">
+          <a href="?control=start" accesskey="n">
             <span class="read_text">START</span></a>
         </div>
       </div>
