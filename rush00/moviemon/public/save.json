@@ -359,19 +359,16 @@
       }
     },
     "My_Moviemons": [
-      "Manos-_The_Hands_of_Fate",
-      "Manos-_The_Hands_of_Fate",
-      "The_Rocky_Horror_Picture_Show",
       "Horror",
-      "Saw"
+      "Terror"
     ],
     "MoviemonBattle": "",
     "coord": [
-      1.360082999999999,
-      103.82883600000004
+      1.3550829999999996,
+      103.82483600000002
     ],
-    "mapx": 59,
-    "mapy": 58
+    "mapx": 55,
+    "mapy": 53
   },
   "1": {
     "slot": 1,
@@ -737,7 +734,7 @@
     "life": 20,
     "strength": 0,
     "index": 0,
-    "movieballs": 100,
+    "movieballs": 89,
     "Moviemons": {
       "Aliens": {
         "Title": "Aliens",
@@ -1081,14 +1078,15 @@
       }
     },
     "My_Moviemons": [
-
+      "The_Rocky_Horror_Picture_Show",
+      "Manos-_The_Hands_of_Fate"
     ],
     "MoviemonBattle": "",
     "coord": [
-      1.352083,
-      103.819836
+      1.3560829999999995,
+      103.820836
     ],
-    "mapx": 50,
-    "mapy": 50
+    "mapx": 51,
+    "mapy": 54
   }
 }

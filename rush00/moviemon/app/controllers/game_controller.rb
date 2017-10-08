@@ -164,9 +164,15 @@ class GameController < ApplicationController
 			when @@button_start
 				Datamanager.instance.set_default
 				Soundmanager.instance.play_song_world
+				@@game_state = @@gs_walking
+				@@movietitle = ''
+				@@battle_commentary = ''
 				return redirection @@url_world_map
 			when @@button_select
 				@@save_index = 0
+				@@game_state = @@gs_walking
+				@@movietitle = ''
+				@@battle_commentary = ''
 				return redirection  @@url_load
 		end
 	end
