@@ -15,7 +15,7 @@
     "life": 20,
     "strength": 0,
     "index": 0,
-    "movieballs": 100,
+    "movieballs": 79,
     "Moviemons": {
       "Aliens": {
         "Title": "Aliens",
@@ -359,15 +359,19 @@
       }
     },
     "My_Moviemons": [
-
+      "Manos-_The_Hands_of_Fate",
+      "Manos-_The_Hands_of_Fate",
+      "The_Rocky_Horror_Picture_Show",
+      "Horror",
+      "Saw"
     ],
     "MoviemonBattle": "",
     "coord": [
-      1.352083,
-      103.819836
+      1.360082999999999,
+      103.82883600000004
     ],
-    "mapx": 50,
-    "mapy": 50
+    "mapx": 59,
+    "mapy": 58
   },
   "1": {
     "slot": 1,
